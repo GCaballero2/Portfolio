@@ -3,7 +3,6 @@
    =============================== */
 
 :root {
-:root {
   --color-primario: #002147;    /* Azul inglés */
   --color-secundario: #E5E7EB;  /* Gris claro */
   --color-acento: #3B82F6;      /* Celeste moderno */
@@ -29,7 +28,7 @@
   /*--color-madera: #f5e7d0;
   --color-azul: #3C4F76;
   /*--color-gris-suave: #f2f2f2;*/
-}
+
 .bg-madera {
   background-color: #f5e7d0;
 }
