@@ -3,15 +3,32 @@
    =============================== */
 
 :root {
-  --color-primario: #00B5D8;    /* Cian */
-  --color-secundario: #E6F7FB;  /* Azul claro */
-  --color-acento: #FF6B35;      /* Naranja coral */
-  --color-texto: #333333;       /* Gris oscuro */
+:root {
+  --color-primario: #002147;    /* Azul inglés */
+  --color-secundario: #E5E7EB;  /* Gris claro */
+  --color-acento: #3B82F6;      /* Celeste moderno */
+  --color-texto: #111111;       /* Negro suave */
   --color-fondo: #FFFFFF;       /* Blanco */
-  --color-bordes: #E0E0E0;      /* Gris claro */
-  --color-madera: #f5e7d0;
+  --color-bordes: #D1D5DB;      /* Gris medio */
+  --color-dorado: #F4D35E;      /* Dorado elegante */
+  --color-gris-oscuro: #374151; /* Gris oscuro para texto secundario */
+  --color-madera: #efd7b0;
+}
+
+
+
+
+
+
+  /*--color-primario: #00B5D8;     Cian */
+  /*--color-secundario: #E6F7FB;  /* Azul claro */
+  /*--color-acento: #FF6B35;      /* Naranja coral */
+  /*--color-texto: #333333;       /* Gris oscuro */
+  /*--color-fondo: #FFFFFF;       /* Blanco */
+  /*--color-bordes: #E0E0E0;      /* Gris claro */
+  /*--color-madera: #f5e7d0;
   --color-azul: #3C4F76;
-  --color-gris-suave: #f2f2f2;
+  /*--color-gris-suave: #f2f2f2;*/
 }
 .bg-madera {
   background-color: #f5e7d0;
@@ -20,7 +37,7 @@
   background-color: #f2f2f2;
 }
 .bg-acento {
-  background-color: var(--color-azul); /* #FF6B35 */
+  background-color: var(--color-primario); /* #FF6B35 */
 }
 
 
@@ -102,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 .navbar .nav-link:hover {
-  color: var(--color-azul); /* opcional para resaltar */
+  color: var(--color-primario); /* opcional para resaltar */
 }
 .logo-navbar {
   height: 40px;  /* ajustá según tamaño deseado */
@@ -149,11 +166,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2px;
   word-break: break-word;
 }
-.gris { background-color: #6c757d; }
+/*.gris { background-color: #6c757d; }
 .verde { background-color: #198754; }
 .amarillo { background-color: #ffc107; color: black; }
 .rojo { background-color: #dc3545; }
-.azul { background-color: #0d6efd; }
+.azul { background-color: #0d6efd; }*/
 
 /* ===============================
    carousel
