@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
    Barra de navegacion
    =============================== */
 .navbar {
-  background-color: var(--color-azul);
+  background-color: var(--color-primario);
 }
 .navbar .nav-link,
 .navbar-brand {
