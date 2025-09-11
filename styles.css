@@ -3,7 +3,7 @@
    =============================== */
 
 :root {
-  --color-primario: #002147;    /* Azul inglés */
+  --color-primario: #103866;    /* Azul inglés */
   --color-secundario: #E5E7EB;  /* Gris claro */
   --color-acento: #3B82F6;      /* Celeste moderno */
   --color-texto: #111111;       /* Negro suave */
@@ -11,7 +11,7 @@
   --color-bordes: #D1D5DB;      /* Gris medio */
   --color-dorado: #F4D35E;      /* Dorado elegante */
   --color-gris-oscuro: #374151; /* Gris oscuro para texto secundario */
-  --color-madera: #efd7b0;
+  --color-madera: #f0ddc0;
 }
 
 .bg-madera {
@@ -77,22 +77,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ===============================
-   Íconos
-   =============================== */
-
-.benefits i {
-  color: var(--color-primario);
-}
-
-/* ===============================
-   Testimonios
-   =============================== */
-
-.testimonios {
-  background-color: var(--color-secundario);
-}
-
-/* ===============================
    Barra de navegacion
    =============================== */
 .navbar {
@@ -112,122 +96,75 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-
-/* ===============================
-   Calendario
-   =============================== */
-.table td:not(:empty) {
-  background-color: var(--color-secundario);
-  font-weight: 600;
-}
-/* Estilos de la agenda médica */
-.calendario {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-}
-.dia {
-  border: 1px solid #ccc;
-  min-height: 120px;
-  padding: 4px;
-  font-size: 0.9rem;
-  position: relative;
-  background-color: #f9f9f9;
-}
-.numero-dia {
-  position: absolute;
-  top: 4px;
-  left: 6px;
-  font-weight: bold;
-  font-size: 0.85rem;
-}
-.consulta {
-  margin-top: 20px;
-  font-size: 0.75rem;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: white;
-  margin-bottom: 2px;
-  word-break: break-word;
-}
-/*.gris { background-color: #6c757d; }
-.verde { background-color: #198754; }
-.amarillo { background-color: #ffc107; color: black; }
-.rojo { background-color: #dc3545; }*/
-.azul { background-color: #0d6efd; }
-
 /* ===============================
    carousel
    =============================== */
-/* Controla la altura general del carrusel */
-#heroCarousel .carousel-item {
-  height: 60vh;
-  min-height: 300px; /* nunca menos que esto, por si la pantalla es muy chica */
-  position: relative;
-  background-color: var(--color-madera);
+/* ===== Hero base ===== */
+.hero-portrait{ height: clamp(480px, 72vh, 880px); position: relative; overflow: hidden; background:#0c1830; }
+
+/* ===== Cinta de fondo (ambiente) ===== */
+.hero-bg-belt{ position:absolute; inset:0; z-index:1; overflow:hidden; }
+.hero-bg-belt .belt{ position:absolute; left:0; top:50%; transform:translateY(-50%); display:flex; gap:3rem; padding:0 3rem; animation: belt-scroll 40s linear infinite; }
+.belt-item{ height: clamp(150px, 21vh, 210px); filter: blur(1.6px) brightness(0.78); opacity:.35; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,.25); }
+
+@keyframes belt-scroll{
+  0%{ transform: translateY(-50%) translateX(0); }
+  100%{ transform: translateY(-50%) translateX(-50%); } /* ajustá según cantidad */
 }
 
-/* Asegura que la imagen se ajuste al área sin recortarse */
-#heroCarousel .carousel-item img {
-  max-height: 60vh;
-  width: auto;
-  max-width: 100%;
-  margin: 0 auto;
-  object-fit: contain;
-  display: block;
+/* ===== Spotlights laterales ===== */
+.spotlight{
+  --spot-width: clamp(240px, 24vw, 360px);
+  --spot-height: clamp(320px, 52vh, 560px);
+  --spot-gap: 2rem;           /* espacio entre items */
+  --spot-duration: 28s;       /* velocidad del pase */
+  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+  width: var(--spot-width); height: var(--spot-height);
+  overflow: hidden; border-radius: 14px; background:#0b1326; box-shadow: 0 10px 28px rgba(0,0,0,.35);
+  /* desvanecido en bordes para “partes” de los vecinos */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.spotlight-left { left: 2.5vw; }
+.spotlight-right{ right:2.5vw; }
+
+.spot-track{
+  position:absolute; left:0; top:0; height:100%;
+  display:flex; align-items:center; gap: var(--spot-gap);
+  padding: 0 calc(var(--spot-gap) * 2);  /* para que asomen los vecinos */
+  animation: spot-shift var(--spot-duration) linear infinite;
+}
+.spot-item{
+  flex: 0 0 calc(var(--spot-width) - 3.6rem);  /* un poco más angosto para que se vean vecinos */
+  height: calc(var(--spot-height) - 2.2rem);
+  object-fit: cover; border-radius: 10px; display:block;
+  box-shadow: 0 12px 24px rgba(0,0,0,.35);
+  filter: brightness(.93) contrast(1.02);
 }
 
-
-/* Ajusta el texto para que se mantenga visible y centrado */
-.carousel-caption {
-  bottom: 10%;
-  transform: translateY(0);
+/* Animación: va “pasando” de un item al siguiente mostrando el centro y dejando ver bordes de vecinos */
+@keyframes spot-shift{
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(0); }                 /* pausa en el primero */
+  25%  { transform: translateX(calc(-1 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
+  45%  { transform: translateX(calc(-1 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); } /* pausa en el segundo */
+  50%  { transform: translateX(calc(-2 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
+  70%  { transform: translateX(calc(-2 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
+  75%  { transform: translateX(calc(-3 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
+  95%  { transform: translateX(calc(-3 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); } /* pausa en el cuarto */
+  100% { transform: translateX(0); }                  /* vuelve al primero (por duplicado en HTML) */
 }
 
-/* Flechas de control siempre centradas verticalmente */
-.carousel-control-prev,
-.carousel-control-next {
-  top: 50%;
-  transform: translateY(-50%);
+/* ===== Tarjeta central ===== */
+.hero-center{ position:absolute; inset:0; z-index:3; }
+.portrait-card{ width: clamp(260px, 26vw, 380px); border-radius:18px; overflow:hidden; background:#fff; }
+.portrait-card figcaption{ background: rgba(16,56,102,.92); color:#fff; }
+
+/* ===== Mobile ===== */
+@media (max-width: 991.98px){
+  .hero-portrait{ height:auto; }
 }
 
-/* Responsive para celulares */
-@media (max-width: 576px) {
-  #heroCarousel .carousel-item {
-    height: 45vh;
-  }
-  .carousel-caption h1 {
-    font-size: 1.4rem;
-  }
-  .carousel-caption p {
-    font-size: 1rem;
-  }
-}
-.flecha-carousel {
-  width: 40px; /* ajustá según tamaño de tu imagen */
-  height: auto;
-  position: absolute;
-  top: 50%;
-  z-index: 1001;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-
-.flecha-carousel:hover {
-  opacity: 1;
-}
-
-.flecha-izquierda {
-  left: 1rem;
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.flecha-derecha {
-  right: 1rem;
-  transform: translateY(-50%);
-  
-}
 
 
 

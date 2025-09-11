@@ -17,93 +17,111 @@
 
 </head>
 
+<body>
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container-fluid">
+
     <!-- Logo / Inicio -->
-    <a class="navbar-brand d-flex align-items-center" href="#" id="logoInicio">
-      <img src="img/LOGO.jpg?v=2" alt="Logo Seralis" class="logo-navbar me-2">
-      Seralis
+    <a class="navbar-brand d-flex align-items-center" href="#inicio" id="logoInicio">
+      <img src="img/LOGO.jpg?v=2" alt="Logo GC" class="logo-navbar me-2">
+      GCaballero
     </a>
 
-    <!-- Botón de colapso en móviles -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Marca (opcional) -->
+    <a class="navbar-brand d-none d-lg-inline" href="#inicio">Portfolio</a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Contenido de la navbar -->
     <div class="collapse navbar-collapse" id="navbarContent">
-      <!-- Enlaces -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#habilidades">Qué puedo hacer</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tecnologias">Tecnologías</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <!-- Links directos externos -->
         <li class="nav-item">
-          <a class="nav-link" href="index.html" id="linkInicio">Inicio</a>
+          <a class="nav-link" target="_blank" rel="noopener"
+             href="https://github.com/GCaballero2">GitHub</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="registro.php">cursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="QuienesSomos.php">charlas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="QuienesSomos.php">Proyectos propios</a>
+          <a class="nav-link" target="_blank" rel="noopener"
+             href="https://www.linkedin.com/in/">LinkedIn</a>
         </li>
       </ul>
-		<!-- Dropdown de login -->
-		<div class="dropdown">
-		  <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-			<i class="fas fa-user-circle fa-lg me-1"></i>
-			Ingresar
-		  </a>
-		  <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 250px;">
-			<form method="post" action="login.php">
-                <div class="mb-3">
-                    <label for="loginEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="loginEmail" name="email" placeholder="demo">
-                </div>
-                <div class="mb-3">
-                    <label for="loginPassword" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="loginPassword" name="password" placeholder="demo">
-                </div>
-                <button type="submit" class="btn btn-acento w-100">Iniciar Sesión</button>
-                <div class="text-center mt-2">
-                    <a href="#crear-cuenta">Crear cuenta</a>
-                </div>
-            </form>
-		  </div>
-		</div>
-      </div>
     </div>
   </div>
 </nav>
 
-<body>
+<section id="hero" class="hero-portrait position-relative">
 
-<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover" data-bs-interval="7000">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="img/slide1.jpg" class="d-block w-100" alt="Terapia de luz roja">
-    </div>
-    <div class="carousel-item">
-      <img src="img/slide2.jpg" class="d-block w-100" alt="Regeneración con fotobiomodulación">
-      <div class="carousel-caption d-none d-md-block">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="img/slide3.jpg" class="d-block w-100" alt="Tratamientos especializados">
-      <div class="carousel-caption d-none d-md-block">
-      </div>
+  <!-- CINTA DE FONDO (ambiente, blur) -->
+  <div class="hero-bg-belt d-none d-lg-block" aria-hidden="true">
+    <div class="belt">
+      <!-- 8–12 miniaturas; duplicá 3–4 al final para loop suave -->
+      <img src="img/cert-01.jpg" class="belt-item" alt="">
+      <img src="img/cert-02.jpg" class="belt-item" alt="">
+      <img src="img/proy-01.jpg" class="belt-item" alt="">
+      <img src="img/cert-03.jpg" class="belt-item" alt="">
+      <img src="img/proy-02.jpg" class="belt-item" alt="">
+      <img src="img/cert-04.jpg" class="belt-item" alt="">
+      <img src="img/proy-03.jpg" class="belt-item" alt="">
+      <!-- duplicados -->
+      <img src="img/cert-01.jpg" class="belt-item" alt="">
+      <img src="img/cert-02.jpg" class="belt-item" alt="">
+      <img src="img/proy-01.jpg" class="belt-item" alt="">
     </div>
   </div>
-  <!-- Botón anterior -->
-<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-  <img src="img/flecha carrusel.png" alt="Anterior" class="flecha-carousel flecha-izquierda">
-</button>
 
-<!-- Botón siguiente -->
-<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-  <img src="img/flecha carrusel.png" alt="Siguiente" class="flecha-carousel flecha-derecha">
-</button>
-</div>
+  <!-- SPOTLIGHT LATERAL IZQUIERDO (certificado centrado + vecinos “asomando”) -->
+  <div class="spotlight spotlight-left d-none d-lg-block" aria-hidden="true">
+    <div class="spot-track">
+      <!-- usá las mismas imágenes que quieras destacar -->
+      <img src="img/cert-01.jpg" class="spot-item" alt="Certificado">
+      <img src="img/cert-02.jpg" class="spot-item" alt="Certificado">
+      <img src="img/cert-03.jpg" class="spot-item" alt="Certificado">
+      <img src="img/cert-XL-04.jpg" class="spot-item" alt="Certificado">
+      <!-- duplicá 1–2 al final -->
+      <img src="img/cert-01.jpg" class="spot-item" alt="">
+    </div>
+  </div>
+
+  <!-- SPOTLIGHT LATERAL DERECHO (podés usar otros o los mismos en distinto orden) -->
+  <div class="spotlight spotlight-right d-none d-lg-block" aria-hidden="true">
+    <div class="spot-track">
+      <img src="img/proy-01.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/proy-02.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/proy-03.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/proy-XL-04.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/proy-01.jpg" class="spot-item" alt="">
+    </div>
+  </div>
+
+  <!-- TARJETA CENTRAL (tu foto) -->
+  <div class="d-none d-lg-flex align-items-center justify-content-center hero-center">
+    <figure class="portrait-card shadow-lg">
+      <img src="img/german.jpg" alt="Germán Caballero" class="w-100">
+      <figcaption class="p-3">
+        <h1 class="h4 mb-1">Germán Caballero</h1>
+        <p class="mb-0">Desarrollo Web · Soporte IT · QA</p>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- MOBILE: se mantiene tu carrusel normal -->
+  <div id="heroMobile" class="carousel slide d-lg-none" data-bs-ride="carousel" data-bs-interval="7000">
+    <!-- deja aquí tus slides móviles como los tenías -->
+    <!-- ... -->
+  </div>
+</section>
+
 
 <section class="bg-acento text-white text-center py-4">
   <div class="container">
@@ -112,134 +130,139 @@
   </div>
 </section>
 
-<section class="benefits py-5 bg-gris-suave">
+<section id="habilidades" class="benefits py-5 bg-gris-suave">
   <div class="container">
+    <h2 class="text-center fw-bold mb-4">Qué puedo hacer</h2>
     <div class="row text-center">
       <div class="col-md-3 mb-4 animate-benefit">
-        <i class="fas fa-hand-holding-heart fa-2x mb-2"></i>
-        <h5 class="fw-bold">Reducción del Dolor</h5>
-        <p>Alivia molestias agudas y crónicas sin fármacos, mediante estimulación natural del sistema nervioso.</p>
+        <i class="fas fa-code fa-2x mb-2"></i>
+        <h5 class="fw-bold">Frontend</h5>
+        <p>HTML, CSS/Bootstrap, JS. Accesible, responsive, claro.</p>
       </div>
-        <div class="col-md-3 mb-4 ani-slide-left">
-          <i class="fas fa-bolt fa-2x mb-2 "></i>
-          <h5 class="fw-bold">Energía Celular</h5>
-          <p>Estimula la producción de ATP para revitalizar los tejidos.</p>
-        </div>
-
-        <div class="col-md-3 mb-4 ani-fade-up">
-          <i class="fas fa-tint fa-2x mb-2 "></i>
-          <h5 class="fw-bold">Mejora Circulatoria</h5>
-          <p>Favorece el flujo sanguíneo y la oxigenación.</p>
-        </div>
-
-        <div class="col-md-3 mb-4 ani-fade-up">
-          <i class="fas fa-dna fa-2x mb-2 "></i>
-          <h5 class="fw-bold">Regeneración Acelerada</h5>
-          <p>Promueve la reparación de tejidos y cicatrización.</p>
-        </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="py-5 bg-secundario text-center bg-gris-suave">
-  <div class="container">
-    <h2 class="mb-4 fw-bold">Lo que dicen nuestros pacientes</h2>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <blockquote class="blockquote">
-          <p>"Después de 6 sesiones, el dolor de mi espalda disminuyó muchísimo. ¡Estoy feliz!"</p>
-          <footer class="blockquote-footer">Ana G.</footer>
-        </blockquote>
+      <div class="col-md-3 mb-4 ani-slide-left">
+        <i class="fas fa-database fa-2x mb-2"></i>
+        <h5 class="fw-bold">Backend</h5>
+        <p>PHP/MySQL básico y flujos simples de formularios.</p>
       </div>
-      <div class="col-md-4 mb-3">
-        <blockquote class="blockquote">
-          <p>"No podía dormir del dolor en el hombro. La fotobiomodulación me devolvió el descanso."</p>
-          <footer class="blockquote-footer">Martín R.</footer>
-        </blockquote>
+      <div class="col-md-3 mb-4 ani-fade-up">
+        <i class="fas fa-screwdriver-wrench fa-2x mb-2"></i>
+        <h5 class="fw-bold">Soporte IT</h5>
+        <p>Impresoras, Office, Outlook, drivers y automatizaciones.</p>
       </div>
-      <div class="col-md-4 mb-3">
-        <blockquote class="blockquote">
-          <p>"Tenía dudas, pero después de probarlo lo recomiendo a todos. Muy efectivo."</p>
-          <footer class="blockquote-footer">Lorena S.</footer>
-        </blockquote>
+      <div class="col-md-3 mb-4 ani-fade-up">
+        <i class="fas fa-robot fa-2x mb-2"></i>
+        <h5 class="fw-bold">Automatización</h5>
+        <p>Scripts, tareas programadas y flujos prácticos.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-5 bg-gris-suave">
+
+<section id="proyectos" class="py-5 bg-secundario bg-gris-suave">
   <div class="container">
-    <h2 class="mb-4 text-center fw-bold">Preguntas Frecuentes</h2>
-    <div class="accordion" id="faqAccordion">
+    <h2 class="mb-4 text-center fw-bold">Proyectos destacados</h2>
+    <div class="row g-4">
+      <!-- Ejemplo 1 -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="img/PacienteGPT1.jpg" class="card-img-top" alt="Proyecto Serialis">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Serialis (sitio clínico)</h5>
+            <p class="card-text">Sitio web con Bootstrap, formularios y estilos propios. Migrado a porfolio.</p>
+            <div class="mt-auto">
+              <a class="btn btn-acento w-100 mb-2" target="_blank" rel="noopener"
+                 href="https://gcaballero2.github.io/Portfolio/">Ver online</a>
+              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
+                 href="https://github.com/GCaballero2/Portfolio">Ver código</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agrega más tarjetas similares aquí -->
+    </div>
+  </div>
+</section>
+
+<section id="tecnologias" class="py-5 bg-gris-suave">
+  <div class="container">
+    <h2 class="mb-4 text-center fw-bold">Tecnologías y herramientas</h2>
+    <div class="accordion" id="techAccordion">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq1">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-            ¿Cuántas sesiones se recomiendan?
+        <h2 class="accordion-header" id="t1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
+            Frontend
           </button>
         </h2>
-        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">Varía según el caso. En general se recomiendan entre 8 y 16 sesiones para un tratamiento completo.</div>
+        <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#techAccordion">
+          <div class="accordion-body">HTML, CSS, Bootstrap, JavaScript.</div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-            ¿Duele o tiene efectos secundarios?
+        <h2 class="accordion-header" id="t2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
+            Backend / Datos
           </button>
         </h2>
-        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">No, es un tratamiento indoloro y no invasivo. No tiene efectos secundarios conocidos.</div>
+        <div id="c2" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+          <div class="accordion-body">PHP básico, MySQL, formularios y CRUD simples.</div>
         </div>
       </div>
       <div class="accordion-item">
-        <h2 class="accordion-header" id="faq3">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-            ¿Cuánto dura cada sesión?
+        <h2 class="accordion-header" id="t3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">
+            Herramientas
           </button>
         </h2>
-        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">La primera sesión dura 1hora, las siguientes duran entre 30-45 minutos.</div>
+        <div id="c3" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
+          <div class="accordion-body">Git/GitHub, VS Code, Windows (soporte, drivers, impresoras).</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-5 bg-gris-suave">
+<section id="sobre-mi" class="py-5">
   <div class="container">
-    <h2 class="mb-4 text-center fw-bold">¿Cómo es una sesión?</h2>
-    <div class="row g-3">
-      <div class="col-md-4">
-        <img src="img/PacienteGPT1.jpg" class="img-fluid rounded" alt="Paciente recibiendo terapia">
-      </div>
-      <div class="col-md-4">
-        <img src="img/PacienteGPT2.jpg" class="img-fluid rounded" alt="Equipo clínico en uso">
-      </div>
-      <div class="col-md-4">
-        <img src="img/PacienteGPT3.jpg" class="img-fluid rounded" alt="Zona lumbar tratada">
-      </div>
+    <h2 class="mb-3 text-center fw-bold">Sobre mí</h2>
+    <p class="lead text-center mb-0">
+      Soy Germán Caballero. Desarrollo páginas web simples, claras y rápidas de mantener.
+      También hago soporte IT y automatizaciones para tareas diarias.
+    </p>
+  </div>
+</section>
+
+<section id="contacto" class="py-5 bg-acento text-white text-center cta-final">
+  <div class="container">
+    <h2 class="fw-bold mb-3">¿Trabajamos juntos?</h2>
+    <p class="lead">Escribime y te muestro cómo podemos mejorar tu sitio o automatizar procesos.</p>
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-2 mt-3">
+      <a class="btn btn-light btn-lg" target="_blank" rel="noopener"
+         href="mailto:tu_correo@ejemplo.com">Enviar correo</a>
+      <a class="btn btn-outline-light btn-lg" target="_blank" rel="noopener"
+         href="https://github.com/GCaballero2">GitHub</a>
+      <a class="btn btn-outline-light btn-lg" target="_blank" rel="noopener"
+         href="https://www.linkedin.com/in/">LinkedIn</a>
     </div>
   </div>
 </section>
+
 
 <footer class="bg-dark text-white py-4">
   <div class="container text-center">
-    <p class="mb-1 fw-bold">Clínica Seralis</p>
-
+    <p class="mb-1 fw-bold">Germán Caballero</p>
     <p class="mb-1">
-      <i class="fab fa-whatsapp me-2 text-success"></i> +598 98 100 583 <br>
-      <i class="fab fa-whatsapp me-2 text-success"></i> +598 98 608 505
+      <i class="fab fa-github me-2"></i>
+      <a class="text-white text-decoration-none" target="_blank" rel="noopener" href="https://github.com/GCaballero2">GCaballero2</a>
     </p>
-
     <p class="mb-1">
-      <i class="fab fa-instagram me-2 text-warning"></i><a href="https://instagram.com/seralismontevideo" target="_blank" class="text-white text-decoration-none">@seralismontevideo</a>
+      <i class="fab fa-linkedin me-2"></i>
+      <a class="text-white text-decoration-none" target="_blank" rel="noopener" href="https://www.linkedin.com/in/">LinkedIn</a>
     </p>
-
-    <p class="small mb-0">Montevideo, Uruguay | © 2025 Seralis</p>
+    <p class="small mb-0">Montevideo, Uruguay | © 2025</p>
   </div>
 </footer>
-
 
 
 <!-- Bootstrap Bundle JS -->
@@ -247,22 +270,9 @@
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Scripts personalizados -->
-<?php
-// Cargar script según la página
-$currentPage = basename($_SERVER['PHP_SELF']);
-if ($currentPage === "dashboard.php") {
-    echo '<script src="/FotoBioModulacion/js/dashboard.js"></script>';
-}
-?>
+
 </body>
 </html>
 
 
-<!-- Seccion: Llamado a la accion -->
-<section class="py-5 bg-acento text-white text-center cta-final">
-  <div class="container">
-    <h2 class="fw-bold mb-3">¿Listo para aliviar tu dolor?</h2>
-    <p class="lead">Solicitá tu consulta hoy mismo y comenzá a recuperar tu bienestar con fotobiomodulación.</p>
-    <a href="registro.php" class="btn btn-acento btn-lg mt-3">Agendar Consulta</a>
-  </div>
-</section>
+
