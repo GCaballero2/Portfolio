@@ -99,6 +99,116 @@ h1, h2, h3, h4, h5, h6 {
 /* ===============================
    carousel
    =============================== */
+/* Contenedor general: deja ver bordes laterales */
+.certs-wrapper{
+  position:relative;
+  max-width:min(1100px, 92vw);
+  margin:0 auto;
+  padding:0 6vw;                 /* “marco” para que asomen los vecinos */
+}
+
+/* Pista horizontal con scroll + snap al centro */
+.certs-track{
+  display:grid;
+  grid-auto-flow:column;
+  gap:24px;                      /* separación entre certificados */
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding:6vw;            /* coincide con el padding del wrapper */
+  -webkit-overflow-scrolling:touch;
+  padding-block:10px;            /* evita recortes de sombras */
+}
+
+/* Oculta barra de scroll en navegadores comunes */
+.certs-track::-webkit-scrollbar{ height:0 }
+.certs-track{ scrollbar-width:none }
+
+/* Cada certificado ocupa ~80% para que se vea completo y los otros asomen */
+.certs-item, .cert-item{ scroll-snap-align:center }
+
+/* Tarjeta visual del certificado */
+.cert-item{
+  width:80vw;                    /* base móvil */
+  max-width:900px;               /* en desktop */
+  background:#0b1c3d;            /* azul de fondo (ajustá a tu paleta) */
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  padding:12px;                  /* “passepartout” alrededor de la imagen */
+}
+
+/* Imagen: alto fijo + contener, para que no se corte el certificado */
+.cert-item img{
+  display:block;
+  height:60vh;                   /* controla la altura visible */
+  max-height:680px;              /* techo en desktop grande */
+  width:100%;
+  object-fit:contain;            /* muestra la página completa sin recortar */
+  background:#fff;               /* borde blanco tipo hoja */
+  border-radius:8px;
+}
+
+/* Botones */
+.cert-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  border:0; width:44px; height:44px; border-radius:50%;
+  background:rgba(0,0,0,.45); color:#fff; font-size:28px; line-height:44px;
+  display:grid; place-items:center; cursor:pointer;
+}
+.cert-btn:hover{ background:rgba(0,0,0,.65) }
+.cert-btn.prev{ left:8px } 
+.cert-btn.next{ right:8px }
+
+/* Desktop: hace que el centro sea ~70% y se vean “peeks” claros a los lados */
+@media (min-width: 992px){
+  .cert-item{ width:68vw; max-width:820px }
+  .certs-wrapper{ padding:0 9vw }
+  .cert-item img{ height:62vh }
+}
+
+/* Carrusel de certificados anclado a la izquierda del hero */
+.certs-wrapper.certs-left{
+  position: absolute;          /* dentro de .hero-portrait */
+  left: 2.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;                  /* por debajo de la tarjeta central (z-index:3) */
+  width: clamp(260px, 24vw, 360px);
+  max-width: none;
+  padding: 0 1rem;             /* deja ver “siluetas” de los vecinos */
+  margin: 0;
+}
+
+/* Pista compacta para el modo izquierda */
+.certs-left .certs-track{
+  gap: 16px;
+  scroll-padding: 1rem;
+  padding-block: 6px;
+}
+
+/* Cada ítem ocupa casi todo el ancho para que se vea completo el central */
+.certs-left .cert-item{
+  width: calc(100% - 0.8rem);
+  max-width: none;
+  padding: 10px;
+}
+
+/* Alto del certificado (página completa sin recortar) */
+.certs-left .cert-item img{
+  height: clamp(240px, 48vh, 520px);
+  max-height: none;
+  object-fit: contain;
+}
+
+.certs-wrapper.certs-left{
+  position:absolute; left:2.5vw; top:50%; transform:translateY(-50%);
+  z-index:2; width:clamp(260px,24vw,360px); padding:0 1rem; margin:0; max-width:none;
+}
+.certs-left .certs-track{ gap:16px; scroll-padding:1rem; padding-block:6px; }
+.certs-left .cert-item{ width:calc(100% - 0.8rem); max-width:none; padding:10px; }
+.certs-left .cert-item img{ height:clamp(240px,48vh,520px); max-height:none; object-fit:contain; }
+
+
+
 /* ===== Hero base ===== */
 .hero-portrait{ height: clamp(480px, 72vh, 880px); position: relative; overflow: hidden; background:#0c1830; }
 
@@ -164,6 +274,27 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991.98px){
   .hero-portrait{ height:auto; }
 }
+
+/* FIX: que solo se vea 1 certificado al centro (y peeks a los lados) */
+.certs-left .certs-track{            /* tamaño de columna = ancho del contenedor */
+  grid-auto-columns: 100%;
+}
+@media (min-width: 1200px){
+  .certs-left .certs-track{          /* deja un pequeño margen para el "peek" */
+    grid-auto-columns: calc(100% - 1.2rem);
+  }
+}
+.certs-left .cert-item{              /* el item ocupa toda la columna */
+  width: 100%;
+}
+
+
+
+
+
+
+
+
 
 
 

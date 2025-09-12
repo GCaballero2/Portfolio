@@ -81,17 +81,35 @@
   </div>
 
   <!-- SPOTLIGHT LATERAL IZQUIERDO (certificado centrado + vecinos “asomando”) -->
-  <div class="spotlight spotlight-left d-none d-lg-block" aria-hidden="true">
-    <div class="spot-track">
-      <!-- usá las mismas imágenes que quieras destacar -->
-      <img src="img/cert-01.jpg" class="spot-item" alt="Certificado">
-      <img src="img/cert-02.jpg" class="spot-item" alt="Certificado">
-      <img src="img/cert-03.jpg" class="spot-item" alt="Certificado">
-      <img src="img/cert-XL-04.jpg" class="spot-item" alt="Certificado">
-      <!-- duplicá 1–2 al final -->
-      <img src="img/cert-01.jpg" class="spot-item" alt="">
-    </div>
+  <!-- Carrusel con peek laterales -->
+<section class="certs-wrapper certs-left d-none d-lg-block">
+  <div class="certs-track" id="certsTrack">
+    <figure class="cert-item">
+      <img src="img/cert-01.jpg" alt="Certificado 1">
+    </figure>
+    <figure class="cert-item">
+      <img src="img/cert-02.jpg" alt="Certificado 2">
+    </figure>
+    <figure class="cert-item">
+      <img src="img/cert-03.jpg" alt="Certificado 3">
+    </figure>
   </div>
+
+  <!-- Controles -->
+  <button class="cert-btn prev" aria-label="Anterior" onclick="scrollCerts(-1)">‹</button>
+  <button class="cert-btn next" aria-label="Siguiente" onclick="scrollCerts(1)">›</button>
+</section>
+
+<script>
+  const track = document.getElementById('certsTrack');
+  function scrollCerts(dir) {
+    const item = track.querySelector('.cert-item');
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+    const step = item.getBoundingClientRect().width + gap;
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+</script>
+
 
   <!-- SPOTLIGHT LATERAL DERECHO (podés usar otros o los mismos en distinto orden) -->
   <div class="spotlight spotlight-right d-none d-lg-block" aria-hidden="true">
@@ -107,7 +125,7 @@
   <!-- TARJETA CENTRAL (tu foto) -->
   <div class="d-none d-lg-flex align-items-center justify-content-center hero-center">
     <figure class="portrait-card shadow-lg">
-      <img src="img/german.jpg" alt="Germán Caballero" class="w-100">
+      <img src="img/German.jpg" alt="Germán Caballero" class="w-100">
       <figcaption class="p-3">
         <h1 class="h4 mb-1">Germán Caballero</h1>
         <p class="mb-0">Desarrollo Web · Soporte IT · QA</p>
