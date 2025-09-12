@@ -10,8 +10,6 @@
   --color-fondo: #FFFFFF;       /* Blanco */
   --color-bordes: #D1D5DB;      /* Gris medio */
   --color-dorado: #F4D35E;      /* Dorado elegante */
-  --color-gris-oscuro: #374151; /* Gris oscuro para texto secundario */
-  --color-madera: #f0ddc0;
 }
 
 .bg-madera {
@@ -41,19 +39,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
-.text-acento {
-  color: var(--color-acento);
-}
-
-/* Responsive ajustes */
-@media (max-width: 576px) {
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-  .hero p.lead {
-    font-size: 1rem;
-  }
-}
 .cta-final h2, .cta-final p {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
@@ -64,17 +49,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-acento {
   background-color: var(--color-acento);
-  color: white;
+  color: #fff;
   border: none;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(59,130,246,.3);
+  transition: transform .2s ease, background-color .2s ease;
 }
-
 .btn-acento:hover {
-  background-color: #e65c29; /* un poco más oscuro */
-  color: white;
+  background-color: #2563eb; /* azul un poco más oscuro */
   transform: scale(1.05);
 }
+
 
 /* ===============================
    Barra de navegacion
@@ -86,8 +70,8 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
   color: white;
 }
-.navbar .nav-link:hover {
-  color: var(--color-primario); /* opcional para resaltar */
+.navbar .nav-link:hover { 
+  color: var(--color-dorado); /* o #fff, o rgba(255,255,255,.85) */
 }
 .logo-navbar {
   height: 40px;  /* ajustá según tamaño deseado */
@@ -164,81 +148,84 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991.98px){
   .hero-portrait{ height:auto; }
 }
+/* Desfase del carrusel derecho (empieza en la mitad del ciclo) */
+.spotlight-right .spot-track{
+  animation-delay: calc(var(--spot-duration) * -0.5);
+}
 
+/* (Opcional) hacelo aún menos predecible: ligera diferencia de velocidad */
+@media (min-width: 992px){
+  .spotlight-right{ --spot-duration: 31s; } /* izquierda sigue en 28s */
+}
 
+/* (Opcional) pausar al pasar el mouse para mirar detalles */
+.spotlight .spot-track:hover{
+  animation-play-state: paused;
+  cursor: pointer;
+}
 
+/* —— Mobile-first del hero —— */
+@media (max-width: 991.98px){
+  .hero-portrait{ height:auto; padding-bottom: 1rem; }
 
+  /* Tarjeta móvil: un toque más angosta que el viewport */
+  .portrait-card--mobile{ width: min(92vw, 520px); }
 
+  /* Marco del carrusel móvil */
+  .mobile-spot{
+    width: min(94vw, 680px);
+    margin: 0 auto;
+    border-radius: 14px;
+    background:#0b1326;
+    box-shadow: 0 10px 28px rgba(0,0,0,.35);
+    padding: .5rem;
+  }
+
+  /* Imagen del carrusel móvil: entrar completa, sin cortar */
+  .mobile-spot-img{
+    height: clamp(220px, 60vh, 560px);
+    object-fit: contain;
+    background:#fff;
+    padding: 6px;
+    border: 1px solid var(--color-bordes);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  }
+}
+
+/* Reutilizamos tu clase para certificados también en móvil */
+.spot-item--contain{
+  object-fit: contain !important;
+  background:#fff;
+  padding:6px;
+  border:1px solid var(--color-bordes);
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+/* ===============================
+   Charlas
+   =============================== */
+/* Chips (filtros) */
+#charlasTags .btn {
+  border-radius: 999px;
+  padding: .35rem .75rem;
+}
+#charlasTags .btn:hover {
+  filter: brightness(1.05);
+}
 
 
 /* ===============================
-   Animación para destacar beneficios
+   Animaciones
    =============================== */
-@keyframes zoomInFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+@keyframes zoomInFade { 0%{opacity:0;transform:scale(.8)} 100%{opacity:1;transform:scale(1)} }
+@keyframes fadeInUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideInLeft{ from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:translateX(0)} }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.animate-benefit { animation: zoomInFade .8s ease-out; }
+.ani-fade-up     { animation: fadeInUp .8s ease-out; }
+.ani-slide-left  { animation: slideInLeft .8s ease-out; }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
-/* Clases para aplicar animaciones */
-.animate-benefit {
-  animation: zoomInFade 0.8s ease-out;
-}
-
-.ani-fade-up {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.ani-slide-left {
-  animation: slideInLeft 0.8s ease-out;
-}
-
-.ani-slide-right {
-  animation: slideInRight 0.8s ease-out;
-}
-
-.ani-zoom {
-  animation: zoomInFade 0.8s ease-out;
-}
 
 /* ===============================
    footer
