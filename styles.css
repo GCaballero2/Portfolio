@@ -263,7 +263,6 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: calc(var(--spot-duration) * -0.5);
 }
 
-<<<<<<< HEAD
 /* FIX: que solo se vea 1 certificado al centro (y peeks a los lados) */
 .certs-left .certs-track{            /* tamaño de columna = ancho del contenedor */
   grid-auto-columns: 100%;
@@ -285,12 +284,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-=======
-/* (Opcional) hacelo aún menos predecible: ligera diferencia de velocidad */
-@media (min-width: 992px){
-  .spotlight-right{ --spot-duration: 31s; } /* izquierda sigue en 28s */
-}
->>>>>>> fd6f7484652839100845f2748d82e894af52c342
 
 /* (Opcional) pausar al pasar el mouse para mirar detalles */
 .spotlight .spot-track:hover{
