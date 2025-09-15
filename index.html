@@ -108,9 +108,9 @@
       <img src="img/cert-02.jpg" class="belt-item" alt="Certificado">
       <img src="img/proy-01.jpg" class="belt-item" alt="Proyecto">
       <img src="img/cert-03.jpg" class="belt-item" alt="Certificado">
-      <img src="img/proy-02.jpg" class="belt-item" alt="Proyecto">
-      <img src="img/cert-04.jpg" class="belt-item" alt="Certificado">
-      <img src="img/proy-03.jpg" class="belt-item" alt="Proyecto">
+      <img src="img/img/24HorasInovacion.jpg" class="belt-item" alt="Proyecto">
+      <!--<img src="img/cert-04.jpg" class="belt-item" alt="Certificado">-->
+      <!--<img src="img/proy-03.jpg" class="belt-item" alt="Proyecto">-->
       <!-- duplicados -->
       <img src="img/cert-01.jpg" class="belt-item" alt="Certificado">
       <img src="img/cert-02.jpg" class="belt-item" alt="Certificado">
@@ -118,44 +118,37 @@
     </div>
   </div>
 
-  <!-- SPOTLIGHT LATERAL IZQUIERDO (certificado centrado + vecinos “asomando”) -->
-  <!-- Carrusel con peek laterales -->
+<!-- SPOTLIGHT LATERAL IZQUIERDO (con botones) -->
 <section class="certs-wrapper certs-left d-none d-lg-block">
   <div class="certs-track" id="certsTrack">
-    <figure class="cert-item">
-      <img src="img/cert-01.jpg" alt="Certificado 1">
-    </figure>
-    <figure class="cert-item">
-      <img src="img/cert-02.jpg" alt="Certificado 2">
-    </figure>
-    <figure class="cert-item">
-      <img src="img/cert-03.jpg" alt="Certificado 3">
-    </figure>
+    <figure class="cert-item"><img src="img/cert-01.jpg" alt="Certificado 1"></figure>
+    <figure class="cert-item"><img src="img/cert-02.jpg" alt="Certificado 2"></figure>
+    <figure class="cert-item"><img src="img/cert-03.jpg" alt="Certificado 3"></figure>
   </div>
-</div>
 
-  <!-- Controles -->
+  <!-- Controles (dentro del <section>) -->
   <button class="cert-btn prev" aria-label="Anterior" onclick="scrollCerts(-1)">‹</button>
   <button class="cert-btn next" aria-label="Siguiente" onclick="scrollCerts(1)">›</button>
 </section>
 
+
 <script>
   const track = document.getElementById('certsTrack');
   function scrollCerts(dir) {
-    const item = track.querySelector('.cert-item');
     const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
-    const step = item.getBoundingClientRect().width + gap;
+    const step = track.clientWidth + gap; // una “página” completa
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
   }
 </script>
+
 
 
   <!-- SPOTLIGHT LATERAL DERECHO (podés usar otros o los mismos en distinto orden) -->
   <div class="spotlight spotlight-right d-none d-lg-block" aria-hidden="true">
     <div class="spot-track">
       <img src="img/proy-01.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/proy-02.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/proy-03.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/24HorasInovacion.jpg" class="spot-item" alt="Proyecto">
+      <img src="img/RemeraArduino.jpg" class="spot-item" alt="Proyecto">
       <img src="img/proy-XL-04.jpg" class="spot-item" alt="Proyecto">
       <img src="img/proy-01.jpg" class="spot-item" alt="">
     </div>
@@ -178,10 +171,32 @@
 
 <section class="bg-acento text-white text-center py-4">
   <div class="container">
-    <h2 class="h4 mb-3 fw-bold">¿Listo para dar el primer paso?</h2>
-    <a href="registro.php" class="btn btn-acento btn-lg">Agendá tu consulta ahora</a>
+    <h2 class="h4 mb-3 fw-bold">Pongamos manos a la obra, juntos</h2>
+
+    <!-- Botón principal: abre el cliente de correo con To: vacío -->
+    <a
+      href="mailto:?subject=Consulta%20desde%20tu%20portfolio&body=Hola%20Germ%C3%A1n%2C%0D%0A%0D%0AQuisiera%20contactarte%20por..."
+      class="btn btn-acento btn-lg"
+      aria-label="Abrir cliente de correo para escribirte"
+    >
+      Escribime ahora
+    </a>
+
+    <!-- Opcional: atajos webmail por si no tienen cliente configurado -->
+    <div class="mt-2 small">
+      <a class="link-light me-2" target="_blank" rel="noopener"
+         href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=Consulta%20desde%20tu%20portfolio&body=Hola%20Germ%C3%A1n%2C%0D%0A%0D%0AQuisiera%20contactarte%20por...">
+        Abrir en Gmail
+      </a>
+      <span class="opacity-75">·</span>
+      <a class="link-light ms-2" target="_blank" rel="noopener"
+         href="https://outlook.live.com/owa/?path=/mail/action/compose&subject=Consulta%20desde%20tu%20portfolio&body=Hola%20Germ%C3%A1n%2C%0D%0A%0D%0AQuisiera%20contactarte%20por...">
+        Abrir en Outlook Web
+      </a>
+    </div>
   </div>
 </section>
+
 
 <section id="habilidades" class="benefits py-5 bg-gris-suave">
   <div class="container">
@@ -216,22 +231,106 @@
   <div class="container">
     <h2 class="mb-4 text-center fw-bold">Proyectos destacados</h2>
     <div class="row g-4">
-      <!-- Ejemplo 1 -->
+
+      <!-- Serialis – Plataforma clínica de fotobiomodulación -->
       <div class="col-md-4">
         <div class="card h-100 shadow-sm">
-          <img src="img/PacienteGPT1.jpg" class="card-img-top" alt="Proyecto Serialis">
+          <img src="img/PacienteGPT1.jpg" class="card-img-top" alt="Serialis – plataforma clínica de fotobiomodulación">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Serialis (sitio clínico)</h5>
-            <p class="card-text">Sitio web con Bootstrap, formularios y estilos propios. Migrado a porfolio.</p>
-            <div class="mt-auto">
-              <a class="btn btn-acento w-100 mb-2" target="_blank" rel="noopener"
-                 href="https://gcaballero2.github.io/Portfolio/">Ver online</a>
-              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
-                 href="https://github.com/GCaballero2/Portfolio">Ver código</a>
+            <h5 class="card-title">Serialis – Plataforma clínica</h5>
+            <p class="card-text">
+              Aplicación web en desarrollo para una clínica de fotobiomodulación. Permite 
+              <strong>agendar turnos</strong>, registrar <strong>historias clínicas</strong> y dar soporte al 
+              <strong>trabajo diario de médicos y recepción</strong> (roles y permisos).
+            </p>
+
+            <!-- Badges (stack + funciones) -->
+            <div class="mb-3 small">
+              <span class="badge bg-secondary me-1 mb-1">Bootstrap</span>
+              <span class="badge bg-secondary me-1 mb-1">PHP</span>
+              <span class="badge bg-secondary me-1 mb-1">MySQL</span>
+              <span class="badge bg-secondary me-1 mb-1">Autenticación</span>
+              <span class="badge bg-secondary me-1 mb-1">CRUD</span>
+              <span class="badge bg-secondary me-1 mb-1">Roles/Permisos</span>
+            </div>
+
+            <div class="mt-auto d-grid gap-2">
+              <button class="btn btn-acento" data-bs-toggle="modal" data-bs-target="#serialisModal">
+                Resumen funcional
+              </button>
+              <!-- Ajustá el correo y asunto a tu preferencia -->
+              <a class="btn btn-outline-dark"
+                href="mailto:tu_correo@ejemplo.com?subject=Solicitud%20de%20demo%20Serialis&body=Hola%20Germ%C3%A1n%2C%20quisiera%20coordinar%20una%20demo%20de%20Serialis.">
+                Solicitar demo
+              </a>
+              <!-- Si querés mantener un link público, podés dejar un “Preview limitado” a capturas -->
+              <!-- <a class="btn btn-outline-dark" target="_blank" rel="noopener" href="RUTA_A_TUS_CAPTURAS">Preview limitado</a> -->
             </div>
           </div>
         </div>
       </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-premio">
+          <img src="img/24HorasInovacion.jpg" class="card-img-top" alt="Concurso 24 horas de innovación">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-trophy text-premio me-2"></i>
+              <h5 class="card-title mb-0">Ganador – 24 horas de Innovación</h5>
+            </div>
+            <p class="card-text">
+              Competencia internacional de creatividad e innovación con 24 h para resolver desafíos de empresas,
+              originada en ESTIA (Francia) y coordinada a nivel global por ÉTS Montreal. El evento en Uruguay se
+              realizó en la Torre de las Telecomunicaciones de Antel, con 27 equipos y 198 participantes. Nuestro
+              equipo <strong>CaffaTeam</strong> (estudiantes de ORT) ganó la sede local con el proyecto
+              <strong>T.I.M.M.I.</strong> (Terminal Inteligente Manejado Mediante Internet) para presentar nuevos
+              robots y usos que mejoren la productividad en el agro usando responsablemente los recursos.
+            </p>
+            <div class="mb-3 small">
+              <span class="badge bg-warning text-dark">🏅 Logro</span>
+              <span class="badge bg-secondary">Innovación</span>
+              <span class="badge bg-secondary">Trabajo en equipo</span>
+            </div>
+            <div class="mt-auto d-grid gap-2">
+              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
+                href="https://fi.ort.edu.uy/novedades/ganadores-del-concurso-24-h-de-innovacion-2016-41995">Ver nota ORT</a>
+              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
+                href="https://fi.ort.edu.uy/58858/33/equipo-de-estudiantes-de-la-facultad-de-ingenieria-fue-el-ganador-de-la-competencia-24-horas-de-innovacion-2016.html">Detalles del evento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Ejemplo 2 – Postura Alerta (prototipo con Arduino) -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <!-- Podés usar una foto del prototipo o un ícono Arduino -->
+            <img src="img/RemeraArduino.jpg" class="card-img-top" alt="Prototipo Postura Alerta">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Postura Alerta</h5>
+              <p class="card-text">
+                Prototipo de remera con <strong>Arduino</strong> y <strong>giroscopio</strong> que detecta encorvamiento.
+                Avisaba con <strong>sonido o vibración</strong> y se configuraba con un botón. 
+                Implementado en <strong>C++</strong> como parte de un proyecto de facultad. <span class="text-muted">funcional</span>
+              </p>
+
+              <div class="mb-3 d-flex flex-wrap gap-2">
+                <span class="badge bg-warning text-dark">Prototipo</span>
+                <span class="badge bg-info text-dark">Arduino</span>
+                <span class="badge bg-secondary">C++</span>
+              </div>
+
+              <div class="mt-auto">
+                <!-- Link al video demostrativo -->
+                <a class="btn btn-acento w-100" target="_blank" rel="noopener" href="URL_DE_TU_VIDEO">
+                  Ver video del prototipo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
       <!-- Agrega más tarjetas similares aquí -->
     </div>
@@ -347,6 +446,58 @@
     <p class="small mb-0">Montevideo, Uruguay | © 2025</p>
   </div>
 </footer>
+
+  <!-- Modal: Resumen funcional de Serialis -->
+  <div class="modal fade" id="serialisModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Serialis – Resumen funcional</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6 class="fw-bold mb-2">Módulos principales</h6>
+              <ul class="mb-3">
+                <li>Agenda: creación/edición de turnos, estados y recordatorios.</li>
+                <li>Historias clínicas: evolución, sesiones y adjuntos.</li>
+                <li>Pacientes: alta, datos de contacto, antecedentes.</li>
+                <li>Usuarios y roles: médicos, recepción, administración.</li>
+              </ul>
+              <h6 class="fw-bold mb-2">Tecnologías</h6>
+              <ul class="mb-3">
+                <li>Frontend: Bootstrap + JS (validaciones y UX responsiva).</li>
+                <li>Backend: PHP con control de sesiones y autenticación.</li>
+                <li>Datos: MySQL (tablas pacientes, turnos, historias, usuarios, etc.).</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold mb-2">Buenas prácticas</h6>
+              <ul class="mb-3">
+                <li>Separación por roles/permisos y registro de acciones básicas.</li>
+                <li>Validación de formularios y manejo de estados.</li>
+                <li>Estructura preparada para mensajes/recordatorios.</li>
+                <li>Diseño responsive y componentes reutilizables.</li>
+              </ul>
+              <div class="alert alert-warning small">
+                <strong>Privacidad:</strong> el entorno contiene datos sensibles de salud. 
+                Las demos se realizan con <em>datos ficticios</em> o capturas anonimizadas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <span class="text-muted small">Proyecto en desarrollo (roadmap abierto a mejoras).</span>
+          <a class="btn btn-acento"
+            href="mailto:tu_correo@ejemplo.com?subject=Demo%20Serialis&body=Hola%20Germ%C3%A1n%2C%20%C2%BFcoordinamos%20una%20demo%20con%20datos%20ficticios%3F">
+            Coordinar demo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 <!-- Bootstrap Bundle JS -->
