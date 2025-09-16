@@ -367,7 +367,9 @@ footer {
 }
 
 
-/* Tarjeta Sobre mí en el spotlight derecho */
+/* ===============================
+    Tarjeta Sobre mí en el spotlight derecho
+   =============================== */
 /* Quitar el difuminado de bordes solo en el spotlight derecho */
 .spotlight-right{
   -webkit-mask-image: none !important;
@@ -412,4 +414,107 @@ footer {
 .about-card-mobile p {
   line-height: 1.5;
 }
+
+
+
+
+/* ===============================
+    Iconos
+   =============================== */
+.tech-icons i {
+  font-size: 1.6rem;
+  margin: 0 .25rem;
+  transition: transform .2s ease;
+}
+.tech-icons i:hover {
+  transform: scale(1.2);
+}
+
+
+
+/* ===============================
+    Bordes animados
+   =============================== */
+/* Borde animado con rayas usando dos capas de background */
+.card.border-animado{
+  border: 2px solid transparent;           /* el “borde” real es transparente */
+  border-radius: 12px;
+  background:
+    /* capa 1: relleno sólido (el color del cuerpo de la tarjeta) */
+    linear-gradient(var(--color-fondo), var(--color-fondo)) padding-box,
+    /* capa 2: rayas animadas para el borde */
+    repeating-linear-gradient(
+      45deg,
+      var(--color-acento) 0 12px,
+      var(--color-primario) 12px 24px
+    ) border-box;
+  background-size: 100% 100%, 48px 100%;   /* la 2da capa es la que se mueve */
+  background-position: 0 0, 0 0;
+  background-clip: padding-box, border-box;
+  animation: borderStripes 1s linear infinite;
+}
+
+/* Variante dorada (opcional) */
+.card.border-animado-dorado{
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(var(--color-fondo), var(--color-fondo)) padding-box,
+    repeating-linear-gradient(
+      45deg,
+      var(--color-dorado) 0 12px,
+      var(--color-primario) 12px 24px
+    ) border-box;
+  background-size: 100% 100%, 48px 100%;
+  background-position: 0 0, 0 0;
+  background-clip: padding-box, border-box;
+  animation: borderStripes 1s linear infinite;
+}
+
+/* Animar SOLO la segunda capa (las rayas) */
+@keyframes borderStripes{
+  to { background-position: 0 0, 48px 0; }
+}
+
+/* Respeto a usuarios con “reducir movimiento” */
+@media (prefers-reduced-motion: reduce){
+  .card.border-animado,
+  .card.border-animado-dorado{
+    animation: none;
+  }
+}
+
+
+
+#repos .card .card-title { font-weight: 700; }
+#repos .card img { border-radius: 6px; }
+#repos .badge { letter-spacing: .2px; }
+
+
+/* ===============================
+    Controles compactos para Charlas
+   =============================== */
+.charlas-controls .form-control{ min-height: 44px; }
+
+.charlas-tags{
+  max-height: 110px;           /* evita crecer infinito */
+  overflow: auto;               /* scroll si hay muchas */
+  padding: .25rem;
+  background: #fff;             /* contraste sobre gris */
+  border: 1px solid var(--color-bordes);
+  border-radius: .5rem;
+}
+
+/* Chips más pequeños */
+#charlasTags .btn{
+  border-radius: 999px;
+  padding: .25rem .6rem;
+  font-size: .85rem;
+  line-height: 1.1;
+}
+
+/* Ajustes de espaciado del bloque superior */
+#charlas .mb-4{ margin-bottom: 1rem !important; } /* título más cerca */
+
+
 

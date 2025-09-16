@@ -232,28 +232,54 @@
         <i class="fas fa-code fa-2x mb-2"></i>
         <h5 class="fw-bold">Frontend</h5>
         <p>HTML, CSS/Bootstrap, JS. Accesible, responsive, claro.</p>
+        <div class="mt-2 tech-icons">
+          <i class="devicon-html5-plain colored"></i>
+          <i class="devicon-css3-plain colored"></i>
+          <i class="devicon-bootstrap-plain colored"></i>
+          <i class="devicon-javascript-plain colored"></i>
+        </div>
       </div>
+
       <div class="col-md-3 mb-4 ani-slide-left">
         <i class="fas fa-database fa-2x mb-2"></i>
         <h5 class="fw-bold">Backend</h5>
         <p>PHP/MySQL básico y flujos simples de formularios.</p>
+        <div class="mt-2 tech-icons">
+          <i class="devicon-php-plain colored"></i>
+          <i class="devicon-mysql-plain colored"></i>
+        </div>
       </div>
+
       <div class="col-md-3 mb-4 ani-fade-up">
         <i class="fas fa-screwdriver-wrench fa-2x mb-2"></i>
         <h5 class="fw-bold">Soporte IT</h5>
         <p>Impresoras, Office, Outlook, drivers y automatizaciones.</p>
+        <div class="mt-2 tech-icons">
+          <i class="devicon-windows8-original colored"></i>
+          <i class="devicon-microsoftsqlserver-plain colored"></i>
+        </div>
       </div>
+
       <div class="col-md-3 mb-4 ani-fade-up">
         <i class="fas fa-robot fa-2x mb-2"></i>
         <h5 class="fw-bold">Automatización</h5>
         <p>Scripts, tareas programadas y flujos prácticos.</p>
+        <div class="mt-2 tech-icons">
+          <i class="devicon-powershell-plain colored"></i>
+          <i class="devicon-python-plain colored"></i>
+        </div>
       </div>
+
       <div class="col-md-3 mb-4 ani-fade-up">
         <i class="fas fa-laptop-code fa-2x mb-2"></i>
         <h5 class="fw-bold">Lenguajes</h5>
         <p>C++, Java, Python (básico).</p>
+        <div class="mt-2 tech-icons">
+          <i class="devicon-cplusplus-plain colored"></i>
+          <i class="devicon-java-plain colored"></i>
+          <i class="devicon-python-plain colored"></i>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -266,7 +292,7 @@
 
       <!-- Serialis – Plataforma clínica de fotobiomodulación -->
       <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm border-animado">
           <img src="img/PacienteGPT1.jpg" class="card-img-top" alt="Serialis – plataforma clínica de fotobiomodulación">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Serialis – Plataforma clínica</h5>
@@ -303,7 +329,7 @@
       </div>
 
       <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-premio">
+        <div class="card h-100 shadow-sm border-animado-dorado">
           <img src="img/24HorasInovacion.jpg" class="card-img-top" alt="Concurso 24 horas de innovación">
           <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center mb-2">
@@ -335,7 +361,7 @@
 
         <!-- Ejemplo 2 – Postura Alerta (prototipo con Arduino) -->
         <div class="col-md-4">
-          <div class="card h-100 shadow-sm">
+          <div class="card h-100 shadow-sm border-animado">
             <!-- Podés usar una foto del prototipo o un ícono Arduino -->
             <img src="img/RemeraArduino.jpg" class="card-img-top" alt="Prototipo Postura Alerta">
             <div class="card-body d-flex flex-column">
@@ -374,18 +400,34 @@
     <h2 class="mb-4 text-center fw-bold">Charlas y eventos</h2>
 
     <!-- Buscador + filtros -->
-    <div class="row g-3 align-items-end mb-4">
-      <div class="col-md-7">
-        <label for="charlasSearch" class="form-label fw-semibold">Buscar</label>
-        <input type="search" id="charlasSearch" class="form-control" placeholder="Embeddings, LLMs, Gestión ágil, TCS…">
-      </div>
-      <div class="col-md-5">
-        <label class="form-label fw-semibold">Filtrar por etiquetas</label>
-        <div class="d-flex flex-wrap gap-2" id="charlasTags">
-          <!-- Se completan dinámicamente -->
-        </div>
-      </div>
+    <!-- Controles (compactos) -->
+<div class="charlas-controls mb-3">
+  <div class="row g-2 align-items-center">
+    <div class="col-md-8">
+      <label for="charlasSearch" class="visually-hidden">Buscar</label>
+      <input type="search" id="charlasSearch" class="form-control" placeholder="Embeddings, LLMs, Gestión ágil, TCS…">
     </div>
+    <div class="col-md-4 d-flex justify-content-md-end">
+      <button class="btn btn-outline-dark w-100 w-md-auto"
+              data-bs-toggle="collapse" data-bs-target="#charlasFilters"
+              aria-expanded="false" aria-controls="charlasFilters">
+        <i class="fas fa-filter me-1"></i> Filtros
+      </button>
+    </div>
+  </div>
+
+  <!-- Filtros: colapsado en mobile, visible en desktop -->
+  <div id="charlasFilters" class="collapse mt-2">
+    <div id="charlasTags" class="charlas-tags d-flex flex-wrap gap-2">
+      <!-- se completan dinámicamente -->
+    </div>
+    <div class="d-flex justify-content-between mt-2">
+      <small class="text-muted">Elegí una o más etiquetas</small>
+      <button class="btn btn-sm btn-link p-0" id="clearTags" type="button">Limpiar filtros</button>
+    </div>
+  </div>
+</div>
+
 
     <!-- Resultados -->
     <div id="charlasList" class="row g-4">
@@ -399,11 +441,11 @@
   </div>
 </section>
 
-
 <section id="tecnologias" class="py-5 bg-gris-suave">
   <div class="container">
     <h2 class="mb-4 text-center fw-bold">Tecnologías y herramientas</h2>
     <div class="accordion" id="techAccordion">
+      
       <div class="accordion-item">
         <h2 class="accordion-header" id="t1">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
@@ -411,9 +453,12 @@
           </button>
         </h2>
         <div id="c1" class="accordion-collapse collapse show" data-bs-parent="#techAccordion">
-          <div class="accordion-body">HTML, CSS, Bootstrap, JavaScript.</div>
+          <div class="accordion-body">
+            HTML5, CSS3, Bootstrap, JavaScript.
+          </div>
         </div>
       </div>
+
       <div class="accordion-item">
         <h2 class="accordion-header" id="t2">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
@@ -421,9 +466,12 @@
           </button>
         </h2>
         <div id="c2" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
-          <div class="accordion-body">PHP básico, MySQL, formularios y CRUD simples.</div>
+          <div class="accordion-body">
+            PHP (básico), MySQL, formularios y CRUD simples.
+          </div>
         </div>
       </div>
+
       <div class="accordion-item">
         <h2 class="accordion-header" id="t3">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">
@@ -431,9 +479,12 @@
           </button>
         </h2>
         <div id="c3" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
-          <div class="accordion-body">Git/GitHub, VS Code, Windows (soporte, drivers, impresoras).</div>
+          <div class="accordion-body">
+            Git / GitHub, VS Code, Windows (soporte, drivers, impresoras).
+          </div>
         </div>
       </div>
+
       <div class="accordion-item">
         <h2 class="accordion-header" id="t4">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4">
@@ -442,7 +493,59 @@
         </h2>
         <div id="c4" class="accordion-collapse collapse" data-bs-parent="#techAccordion">
           <div class="accordion-body">
-            C++, Java, Python (básico), JavaScript.
+            C++ (orientado a objetos), Java (orientado a objetos), Python (básico), JavaScript.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider-animado">
+
+<section id="repos" class="py-5 bg-gris-suave">
+  <div class="container">
+    <h2 class="mb-4 text-center fw-bold">Código abierto</h2>
+    <div class="row g-4">
+
+      <!-- Tarjeta 1: Repositorio actual -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm border-animado">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-1">Portfolio (este sitio)</h5>
+            <p class="text-muted small mb-3">HTML · CSS · Bootstrap · JS</p>
+            <div class="mb-3 small d-flex flex-wrap gap-2">
+              <img alt="lang" height="20" src="https://img.shields.io/badge/lang-HTML%2FCSS%2FJS-blue">
+              <img alt="repo" height="20" src="https://img.shields.io/badge/repo-public-success">
+              <img alt="status" height="20" src="https://img.shields.io/badge/status-activo-brightgreen">
+            </div>
+            <p class="card-text flex-grow-1">
+              Código fuente de este portfolio personal, con secciones, componentes dinámicos y estilos propios.
+            </p>
+            <a class="btn btn-acento mt-auto" target="_blank" rel="noopener"
+              href="https://github.com/GCaballero2/Portfolio">
+              Ver en GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Próximamente -->
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-1">Portfolio en PHP</h5>
+            <p class="text-muted small mb-3">Bootstrap · PHP · Plantillas</p>
+            <div class="mb-3 small d-flex flex-wrap gap-2">
+              <img alt="status" height="20" src="https://img.shields.io/badge/status-pr%C3%B3ximamente-orange">
+            </div>
+            <p class="card-text flex-grow-1">
+              Versión del portfolio en PHP con plantillas reutilizables, integración de componentes y estructura modular.
+            </p>
+            <button class="btn btn-outline-dark mt-auto" data-bs-toggle="modal" data-bs-target="#proximamenteModal">
+              Más información
+            </button>
           </div>
         </div>
       </div>
@@ -534,6 +637,24 @@
       </div>
     </div>
   </div>
+
+<!-- Modal Próximamente -->
+<div class="modal fade" id="proximamenteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Próximamente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        Estoy trabajando en una versión en PHP de este portfolio. Incluirá plantillas, componentes reutilizables y mejores prácticas de desarrollo.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
