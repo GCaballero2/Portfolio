@@ -317,7 +317,7 @@
                 Resumen funcional
               </button>
               <!-- Ajustá el correo y asunto a tu preferencia -->
-              <a class="btn btn-outline-dark"
+              <a class="btn btn-acento"
                 href="mailto:tu_correo@ejemplo.com?subject=Solicitud%20de%20demo%20Serialis&body=Hola%20Germ%C3%A1n%2C%20quisiera%20coordinar%20una%20demo%20de%20Serialis.">
                 Solicitar demo
               </a>
@@ -350,9 +350,9 @@
               <span class="badge bg-secondary">Trabajo en equipo</span>
             </div>
             <div class="mt-auto d-grid gap-2">
-              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
+              <a class="btn btn-acento w-100" target="_blank" rel="noopener"
                 href="https://fi.ort.edu.uy/novedades/ganadores-del-concurso-24-h-de-innovacion-2016-41995">Ver nota ORT</a>
-              <a class="btn btn-outline-dark w-100" target="_blank" rel="noopener"
+              <a class="btn btn-acento w-100" target="_blank" rel="noopener"
                 href="https://fi.ort.edu.uy/58858/33/equipo-de-estudiantes-de-la-facultad-de-ingenieria-fue-el-ganador-de-la-competencia-24-horas-de-innovacion-2016.html">Detalles del evento</a>
             </div>
           </div>
@@ -379,14 +379,70 @@
               </div>
 
               <div class="mt-auto">
-                <!-- Link al video demostrativo -->
+                <button class="btn btn-acento w-100" data-bs-toggle="modal" data-bs-target="#videoArduinoModalSoon">
+                  Ver video (próximamente)
+                </button>
+
+                <!-- Link al video demostrativo 
                 <a class="btn btn-acento w-100" target="_blank" rel="noopener" href="URL_DE_TU_VIDEO">
                   Ver video del prototipo
-                </a>
+                </a>-->
               </div>
             </div>
           </div>
         </div>
+        
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm border-animado">
+            <img src="img/Sonidista.jpg" class="card-img-top" alt="Charlas FranklinCovey para Conaprole">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Soporte técnico – FranklinCovey / Conaprole</h5>
+              <p class="card-text">
+                <em>2025</em><br>
+                Sonidista en más de 10 charlas corporativas de <strong>FranklinCovey</strong> para <strong>Conaprole</strong>.
+                En eventos con oradores y directivos de alto nivel, la operación técnica debe ser impecable:
+                la <strong>prevención de incidentes</strong> y la preparación de <strong>soluciones de respaldo</strong> 
+                son parte esencial del trabajo, de modo que cualquier imprevisto se resuelva antes de impactar en el evento.
+              </p>
+              <div class="mb-3 small">
+                <span class="badge bg-secondary me-1 mb-1">Soporte AV</span>
+                <span class="badge bg-secondary me-1 mb-1">Prevención de incidentes</span>
+                <span class="badge bg-secondary me-1 mb-1">Evento corporativo</span>
+                <span class="badge bg-secondary me-1 mb-1">Cliente: Conaprole</span>
+              </div>
+              
+              <div class="mt-auto">
+                <div class="btn-group btn-acento w-100">
+                  <button type="button" class="btn btn-outline-dark dropdown-toggle w-100"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ver charlas relacionadas
+                  </button>
+                  <ul class="dropdown-menu btn-acento dropdown-menu-end w-100">
+                    <li>
+                      <a class="dropdown-item btn-acento" target="_blank" rel="noopener"
+                        href="https://www.franklincovey.com/blog/team-development-for-strategic-success/">
+                        Team Development for Strategic Success
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item btn-acento" target="_blank" rel="noopener"
+                        href="https://franklincovey.com.uy/soluciones/productividad/las-5-elecciones/">
+                        Las 5 Elecciones hacia la Productividad Extraordinaria
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-text mt-2">
+                  Mismos ciclos para ambas; en todas participó el Gerente General de Conaprole.
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
 
 
 
@@ -656,6 +712,33 @@
   </div>
 </div>
 
+<!-- Modal: Video del prototipo (próximamente) -->
+<div class="modal fade" id="videoArduinoModalSoon" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Video del prototipo – Próximamente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-3">
+          Estoy preparando un video corto mostrando la remera con sensor de postura en funcionamiento.
+          Apenas esté listo, lo publicaré aquí.
+        </p>
+        <div class="alert alert-info small mb-0">
+          ¿Querés que te avise cuando esté? 
+          <a class="alert-link" href="mailto:tu_correo@ejemplo.com?subject=Avisarme%20cuando%20est%C3%A9%20el%20video%20de%20la%20remera&body=Hola%20Germ%C3%A1n%2C%20avisame%20cuando%20subas%20el%20video%20del%20prototipo%20de%20la%20remera.%20Gracias.">
+            Enviame un mail
+          </a>.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-dark" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- Bootstrap Bundle JS -->
@@ -716,6 +799,22 @@
       organizador: "Universidad ORT Uruguay",
       url: "https://fi.ort.edu.uy/eventos/vibe-coding-efectivo-con-cursor-158763",
       etiquetas: ["Productividad", "Vibe Coding", "Herramientas"]
+    },
+    {
+      titulo: "Las 5 Elecciones hacia la Productividad Extraordinaria",
+      fecha: "2025-07-16",
+      organizador: "FranklinCovey Uruguay",
+      url: "https://franklincovey.com.uy/soluciones/productividad/las-5-elecciones/",
+      etiquetas: ["Productividad", "Liderazgo", "Gestión del tiempo"],
+      destacada: true
+    },
+    {
+      titulo: "Team Development for Strategic Success",
+      fecha: "2025-09-16",
+      organizador: "FranklinCovey",
+      url: "https://www.franklincovey.com/blog/team-development-for-strategic-success/",
+      etiquetas: ["Productividad", "Trabajo en equipo", "Liderazgo"],
+      destacada: true
     }
   ];
 
@@ -761,44 +860,59 @@
     return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"2-digit" });
   }
 
-  // Render de tarjeta
-  function card(c){
-    return `
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">${c.titulo}</h5>
-            <p class="text-muted mb-1">${c.organizador}${c.fecha ? " · " + fechaBonita(c.fecha) : ""}</p>
-            <div class="mb-3 small">
-              ${c.etiquetas.map(t => `<span class="badge bg-secondary me-1 mb-1">${t}</span>`).join("")}
-            </div>
-            <div class="mt-auto">
-              <a class="btn btn-acento w-100" target="_blank" rel="noopener" href="${c.url}">Ver evento</a>
-            </div>
+function apply(){
+  const q = $search.value.trim();
+  const active = getActiveTags();
+
+  // Base: búsqueda o todo
+  let base = q ? fuse.search(q).map(r => r.item) : [...CHARLAS];
+
+  // Filtro por etiquetas (todas las seleccionadas)
+  if(active.length){
+    base = base.filter(c => active.every(t => c.etiquetas.includes(t)));
+  }
+
+  // Orden por fecha (desc) con Date real (soporta 2025 > 2024)
+  const ts = s => s ? new Date(s).getTime() : 0;
+  base.sort((a,b) => ts(b.fecha) - ts(a.fecha));
+
+  // Destacadas primero
+  const destacadas = base.filter(x => x.destacada);
+  const normales   = base.filter(x => !x.destacada);
+  base = [...destacadas, ...normales];
+
+  $list.innerHTML = base.map(card).join("");
+  $empty.classList.toggle("d-none", base.length !== 0);
+}
+
+function card(c){
+  const isDest = c.destacada;
+  const badgeDest = isDest
+    ? `<span class="badge-destacada">Destacada</span>`
+    : "";
+
+  return `
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm ${isDest ? "card--destacada" : ""}">
+        ${badgeDest}
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${c.titulo}</h5>
+          <p class="text-muted mb-1">
+            ${c.organizador}${c.fecha ? " · " + fechaBonita(c.fecha) : ""}
+          </p>
+          <div class="mb-3 small">
+            ${c.etiquetas.map(t => `<span class="badge bg-secondary me-1 mb-1">${t}</span>`).join("")}
+          </div>
+          <div class="mt-auto">
+            <a class="btn btn-acento w-100" target="_blank" rel="noopener" href="${c.url}">
+              Ver evento
+            </a>
           </div>
         </div>
       </div>
-    `;
-  }
-
-  // Lógica de búsqueda + filtros
-  function apply(){
-    const q = $search.value.trim();
-    const active = getActiveTags();
-
-    let base = q ? fuse.search(q).map(r => r.item) : [...CHARLAS];
-
-    // Filtro por etiquetas (todas las seleccionadas)
-    if(active.length){
-      base = base.filter(c => active.every(t => c.etiquetas.includes(t)));
-    }
-
-    // Orden por fecha desc (si hay fecha)
-    base.sort((a,b) => (b.fecha||"") .localeCompare(a.fecha||""));
-
-    $list.innerHTML = base.map(card).join("");
-    $empty.classList.toggle("d-none", base.length !== 0);
-  }
+    </div>
+  `;
+}
 
   // Eventos
   $search.addEventListener("input", apply);
@@ -808,73 +922,134 @@
   apply();
 </script>
 
+<script>
+  document.getElementById("clearTags")?.addEventListener("click", () => { 
+  $tags.querySelectorAll('input[type="checkbox"]').forEach(i => i.checked = false);
+  apply();
+});
+</script>
+
+<script>
+  // …tu código de CHARLAS y funciones…
+
+  // Al final de tu script, después de apply():
+  (function buildJsonLdFromCharlas(){
+    const events = CHARLAS.map(c => ({
+      "@type": "Event",
+      "name": c.titulo,
+      "url": c.url,
+      ...(c.fecha ? { "startDate": c.fecha } : {}),
+      "organizer": { "@type": "Organization", "name": c.organizador },
+      "eventAttendanceMode": c.url.includes("franklincovey") 
+        ? "https://schema.org/OnlineEventAttendanceMode"
+        : "https://schema.org/OfflineEventAttendanceMode"
+    }));
+    const jsonld = {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "Person", "name": "Germán Caballero", "url": "https://gcaballero2.github.io/Portfolio/" },
+        { "@type": "ItemList", "name": "Charlas y eventos", "itemListElement": events }
+      ]
+    };
+    const s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.text = JSON.stringify(jsonld);
+    document.body.appendChild(s);
+  })();
+</script>
+
+
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@graph":[
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type":"Person",
-      "name":"Germán Caballero",
-      "url":"https://gcaballero2.github.io/Portfolio/"
+      "@type": "Person",
+      "name": "Germán Caballero",
+      "url": "https://gcaballero2.github.io/Portfolio/"
     },
     {
-      "@type":"ItemList",
-      "name":"Charlas y eventos",
-      "itemListElement":[
+      "@type": "ItemList",
+      "name": "Charlas y eventos",
+      "itemListElement": [
         {
-          "@type":"Event",
-          "name":"Embeddings y LLMs: evaluación y aplicación",
-          "organizer":{"@type":"Organization","name":"Universidad ORT Uruguay"},
-          "url":"https://fi.ort.edu.uy/eventos/embeddings-y-llms-evaluacion-y-aplicacion-162581",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "Team Development for Strategic Success",
+          "url": "https://www.franklincovey.com/blog/team-development-for-strategic-success/",
+          "startDate": "2025-09-16",
+          "organizer": { "@type": "Organization", "name": "FranklinCovey" },
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode"
         },
         {
-          "@type":"Event",
-          "name":"Inteligencia Artificial en la gestión ágil de proyectos",
-          "organizer":{"@type":"Organization","name":"Universidad ORT Uruguay"},
-          "url":"https://fi.ort.edu.uy/eventos/inteligencia-artificial-en-la-gestion-gil-de-proyectos-162568",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "Las 5 Elecciones hacia la Productividad Extraordinaria",
+          "url": "https://franklincovey.com.uy/soluciones/productividad/las-5-elecciones/",
+          "startDate": "2025-07-16",
+          "organizer": { "@type": "Organization", "name": "FranklinCovey Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode"
         },
         {
-          "@type":"Event",
-          "name":"Descubrí la programación competitiva con TCS",
-          "organizer":{"@type":"Organization","name":"Universidad ORT Uruguay"},
-          "url":"https://fi.ort.edu.uy/eventos/te-invitamos-a-descubrir-el-mundo-de-la-programacion-competitiva-con-tcs-162726",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "Descubrí la programación competitiva con TCS",
+          "url": "https://fi.ort.edu.uy/eventos/te-invitamos-a-descubrir-el-mundo-de-la-programacion-competitiva-con-tcs-162726",
+          "startDate": "2024-08-20",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         },
         {
-          "@type":"Event",
-          "name":"Implementando A/B Testing con Feature Flags",
-          "organizer":{"@type":"Organization","name":"Universidad ORT Uruguay"},
-          "url":"https://fi.ort.edu.uy/eventos/implementando-ab-testing-con-feature-flags-158753",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "IA y automatización para transformar tu empresa",
+          "url": "https://fi.ort.edu.uy/eventos/ia-y-automatizacion-para-transformar-tu-empresa-161245",
+          "startDate": "2024-07-10",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         },
         {
-          "@type":"Event",
-          "name":"IA y automatización para transformar tu empresa",
-          "organizer":{"@type":"Organization","name":"Universidad ORT Uruguay"},
-          "url":"https://fi.ort.edu.uy/eventos/ia-y-automatizacion-para-transformar-tu-empresa-161245",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "Embeddings y LLMs: evaluación y aplicación",
+          "url": "https://fi.ort.edu.uy/eventos/embeddings-y-llms-evaluacion-y-aplicacion-162581",
+          "startDate": "2024-06-01",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         },
         {
-          "@type":"Event",
+          "@type": "Event",
+          "name": "Inteligencia Artificial en la gestión ágil de proyectos",
+          "url": "https://fi.ort.edu.uy/eventos/inteligencia-artificial-en-la-gestion-gil-de-proyectos-162568",
+          "startDate": "2024-05-15",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+        },
+        {
+          "@type": "Event",
+          "name": "Implementando A/B Testing con Feature Flags",
+          "url": "https://fi.ort.edu.uy/eventos/implementando-ab-testing-con-feature-flags-158753",
+          "startDate": "2024-04-18",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+        },
+        {
+          "@type": "Event",
           "name": "Kubernetes: lo bueno, lo malo y lo feo",
-          "organizer": "Universidad ORT Uruguay",
-          url: "https://fi.ort.edu.uy/eventos/kubernetes-lo-bueno-lo-malo-y-lo-feo-161230",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "url": "https://fi.ort.edu.uy/eventos/kubernetes-lo-bueno-y-lo-malo-y-lo-feo-161230",
+          "startDate": "2024-03-12",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         },
         {
-          titulo: "Vibe Coding efectivo con Cursor",
-          fecha: "2024-02-20",
-          organizador: "Universidad ORT Uruguay",
-          url: "https://fi.ort.edu.uy/eventos/vibe-coding-efectivo-con-cursor-158763",
-          "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode"
+          "@type": "Event",
+          "name": "Vibe Coding efectivo con Cursor",
+          "url": "https://fi.ort.edu.uy/eventos/vibe-coding-efectivo-con-cursor-158763",
+          "startDate": "2024-02-20",
+          "organizer": { "@type": "Organization", "name": "Universidad ORT Uruguay" },
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         }
       ]
     }
   ]
 }
 </script>
+
 
 
 </body>
