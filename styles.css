@@ -365,3 +365,37 @@ h1, h2, h3, h4, h5, h6 {
 footer {
   font-size: 0.9rem;
 }
+
+
+/* Tarjeta Sobre mí en el spotlight derecho */
+/* Quitar el difuminado de bordes solo en el spotlight derecho */
+.spotlight-right{
+  -webkit-mask-image: none !important;
+          mask-image: none !important;
+}
+
+/* Hacer la tarjeta más sólida, con más aire interno y borde blanco */
+.about-card {
+  position: absolute;
+  inset: 0;                          /* ocupa todo el spotlight */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* más “aire” para que el texto no quede pegado a los bordes */
+  padding: clamp(24px, 4vw, 36px);
+
+  color: #fff;
+  background: rgba(16,56,102,0.92);  /* fondo sólido */
+  border: 2px solid #fff;            /* borde blanco claro */
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.45);
+
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.about-card h2 { text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+.about-card p  { line-height: 1.55; margin-bottom: .75rem; }
+
+}

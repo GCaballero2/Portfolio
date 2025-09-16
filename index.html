@@ -80,13 +80,13 @@
 <div id="heroMobile" class="carousel slide d-lg-none" data-bs-ride="carousel" data-bs-interval="7000">
   <div class="carousel-inner mobile-spot">
     <div class="carousel-item active">
-      <img src="img/cert-01.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado">
+      <img src="img/cert-01.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado 1">
     </div>
     <div class="carousel-item">
-      <img src="img/cert-02.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado">
+      <img src="img/cert-02.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado 2">
     </div>
     <div class="carousel-item">
-      <img src="img/cert-03.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado">
+      <img src="img/cert-03.jpg" class="d-block w-100 mobile-spot-img spot-item--contain" alt="Certificado 3">
     </div>
   </div>
 
@@ -110,9 +110,6 @@
       <img src="img/proy-01.jpg" class="belt-item" alt="Proyecto">
       <img src="img/cert-03.jpg" class="belt-item" alt="Certificado">
       <img src="img/24HorasInovacion.jpg" class="belt-item" alt="Proyecto">
-      <!--<img src="img/cert-04.jpg" class="belt-item" alt="Certificado">-->
-      <!--<img src="img/proy-03.jpg" class="belt-item" alt="Proyecto">-->
-      <!-- duplicados -->
       <img src="img/cert-01.jpg" class="belt-item" alt="Certificado">
       <img src="img/cert-02.jpg" class="belt-item" alt="Certificado">
       <img src="img/proy-01.jpg" class="belt-item" alt="Proyecto">
@@ -125,6 +122,10 @@
     <figure class="cert-item"><img src="img/cert-01.jpg" alt="Certificado 1"></figure>
     <figure class="cert-item"><img src="img/cert-02.jpg" alt="Certificado 2"></figure>
     <figure class="cert-item"><img src="img/cert-03.jpg" alt="Certificado 3"></figure>
+    <figure class="cert-item"><img src="img/proy-01.jpg" class="spot-item" alt="Proyecto"></figure>
+    <figure class="cert-item"><img src="img/24HorasInovacion.jpg" class="spot-item" alt="Proyecto"></figure>
+    <figure class="cert-item"> <img src="img/RemeraArduino.jpg" class="spot-item" alt="Proyecto"></figure>
+
   </div>
 
   <!-- Controles (dentro del <section>) -->
@@ -142,19 +143,25 @@
   }
 </script>
 
-
-
-  <!-- SPOTLIGHT LATERAL DERECHO (podés usar otros o los mismos en distinto orden) -->
-  <div class="spotlight spotlight-right d-none d-lg-block" aria-hidden="true">
-    <div class="spot-track">
-      <img src="img/proy-01.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/24HorasInovacion.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/RemeraArduino.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/proy-XL-04.jpg" class="spot-item" alt="Proyecto">
-      <img src="img/proy-01.jpg" class="spot-item" alt="">
+<!-- SPOTLIGHT LATERAL DERECHO (tarjeta Sobre mí encima del fondo de certificados) -->
+<div class="spotlight spotlight-right d-none d-lg-block">
+  <article class="about-card" role="region" aria-label="Sobre mí">
+    <h2 class="h5 fw-bold mb-2">Sobre mí</h2>
+    <p class="mb-2">
+      Soy estudiante de <strong>Ingeniería en Sistemas</strong> en la <strong>Universidad ORT Uruguay</strong>,
+      donde curso materias de algoritmos, redes e IA.
+    </p>
+    <p class="mb-3">
+      Me apasiona el desarrollo web y la tecnología aplicada al hardware. Aprendo construyendo
+      <strong>proyectos prácticos y prototipos</strong>.
+    </p>
+    <div class="d-flex gap-2">
+      <a class="btn btn-acento btn-sm" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-outline-light btn-sm" href="#contacto">Contactarme</a>
     </div>
-  </div>
+  </article>
 </div>
+
 
 
   <!-- TARJETA CENTRAL (tu foto) -->
