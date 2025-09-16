@@ -194,6 +194,13 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* ===== Hero base ===== */
+@media (max-width: 768px) {
+  .hero-portrait img {
+    max-height: 50vh; /* ocupa la mitad de la pantalla */
+    width: auto;      /* mantiene proporción */
+  }
+}
+
 .hero-portrait{ height: clamp(480px, 72vh, 880px); position: relative; overflow: hidden; background:#0c1830; }
 
 /* ===== Cinta de fondo (ambiente) ===== */
@@ -572,3 +579,21 @@ footer {
 
 
 
+/* ===============================
+    Limite tamaño imagenes
+   =============================== */
+
+/* 1) Regla global segura para TODAS las imágenes */
+img {
+  max-width: 100%;
+  height: auto;          /* mantiene proporción */
+  display: block;        /* evita espacios raros en línea */
+}
+
+/* En móvil, limitar altura pero sin recortar */
+@media (max-width: 768px) {
+  img {
+    max-height: 80vh;    /* nunca ocupa toda la pantalla */
+    object-fit: contain; /* se ajusta al espacio SIN cortar */
+  }
+}
