@@ -398,4 +398,18 @@ footer {
 .about-card h2 { text-shadow: 0 1px 2px rgba(0,0,0,.45); }
 .about-card p  { line-height: 1.55; margin-bottom: .75rem; }
 
+/* Versión móvil de la tarjeta Sobre mí */
+.about-card-mobile {
+  background: #103866;        /* mismo azul que la navbar */
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
+.about-card-mobile h2 {
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+.about-card-mobile p {
+  line-height: 1.5;
+}
+
