@@ -79,9 +79,8 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: contain;
 }
 
-
 /* ===============================
-   carousel
+   Carrusel
    =============================== */
 /* Contenedor general: deja ver bordes laterales */
 .certs-wrapper{
@@ -108,7 +107,8 @@ h1, h2, h3, h4, h5, h6 {
 .certs-track{ scrollbar-width:none }
 
 /* Cada certificado ocupa ~80% para que se vea completo y los otros asomen */
-.certs-item, .cert-item{ scroll-snap-align:center }
+.cert-item { scroll-snap-align: center; }
+
 
 /* Tarjeta visual del certificado */
 .cert-item{
@@ -151,46 +151,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Carrusel de certificados anclado a la izquierda del hero */
 .certs-wrapper.certs-left{
-  position: absolute;          /* dentro de .hero-portrait */
-  left: 2.5vw;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;                  /* por debajo de la tarjeta central (z-index:3) */
-  width: clamp(260px, 24vw, 360px);
-  max-width: none;
-  padding: 0 1rem;             /* deja ver “siluetas” de los vecinos */
-  margin: 0;
-}
-
-/* Pista compacta para el modo izquierda */
-.certs-left .certs-track{
-  gap: 16px;
-  scroll-padding: 1rem;
-  padding-block: 6px;
-}
-
-/* Cada ítem ocupa casi todo el ancho para que se vea completo el central */
-.certs-left .cert-item{
-  width: calc(100% - 0.8rem);
-  max-width: none;
-  padding: 10px;
-}
-
-/* Alto del certificado (página completa sin recortar) */
-.certs-left .cert-item img{
-  height: clamp(240px, 48vh, 520px);
-  max-height: none;
-  object-fit: contain;
-}
-
-.certs-wrapper.certs-left{
   position:absolute; left:2.5vw; top:50%; transform:translateY(-50%);
   z-index:2; width:clamp(260px,24vw,360px); padding:0 1rem; margin:0; max-width:none;
 }
 .certs-left .certs-track{ gap:16px; scroll-padding:1rem; padding-block:6px;grid-auto-columns: 100%; }
 .certs-left .cert-item{ width:calc(100% - 0.8rem); max-width:none; padding:10px; }
 .certs-left .cert-item img{ height:clamp(240px,48vh,520px); max-height:none; object-fit:contain; }
-
 
 
 /* ===== Hero base ===== */
@@ -227,7 +193,35 @@ h1, h2, h3, h4, h5, h6 {
           mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
 }
 .spotlight-left { left: 2.5vw; }
+
 .spotlight-right{ right:2.5vw; }
+/* Desfase del carrusel derecho (empieza en la mitad del ciclo) */
+.spotlight-right .spot-track{
+  animation-delay: calc(var(--spot-duration) * -0.5);
+}
+/* (Opcional) pausar al pasar el mouse para mirar detalles */
+.spotlight .spot-track:hover{
+  animation-play-state: paused;
+  cursor: pointer;
+}
+/* ——— Sobre mí: scroll + respiración superior adaptable ——— */
+.spotlight-right .about-card--spotlight{
+  /* layout + scroll */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto;
+  scrollbar-gutter: stable both-edges;
+
+  /* padding lateral/base */
+  padding-left: clamp(20px, 3.5vmin, 36px);
+  padding-right: clamp(20px, 3.5vmin, 36px);
+  padding-bottom: clamp(20px, 3.5vmin, 36px);
+
+  /* 👇 “aire” arriba que escala con la altura de la ventana */
+  padding-top: clamp(24px, 6vh, 48px);
+}
 
 .spot-track{
   position:absolute; left:0; top:0; height:100%;
@@ -258,37 +252,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== Tarjeta central ===== */
 .hero-center{ position:absolute; inset:0; z-index:3;pointer-events: none; }
-.portrait-card{ width: clamp(260px, 26vw, 380px); border-radius:18px; overflow:hidden; background:#fff; }
+.portrait-card{
+  width: clamp(260px, 26vw, 380px);
+  border-radius:18px;
+  overflow:hidden;
+  background:#cec2c2;
+}
+
 .portrait-card figcaption{ background: rgba(16,56,102,.92); color:#fff; }
 
-/* ===== Mobile ===== */
-@media (max-width: 991.98px){
-  .hero-portrait{ height:auto; }
-}
-/* Desfase del carrusel derecho (empieza en la mitad del ciclo) */
-.spotlight-right .spot-track{
-  animation-delay: calc(var(--spot-duration) * -0.5);
-}
-
-/* FIX: que solo se vea 1 certificado al centro (y peeks a los lados) */
-.certs-left .certs-track{            /* tamaño de columna = ancho del contenedor */
+.certs-left .certs-track{
   grid-auto-columns: 100%;
 }
+
+.certs-left .cert-item{              /* el item ocupa toda la columna */
+  width: 100%;
+}
+
 @media (min-width: 1200px){
   .certs-left .certs-track{          /* deja un pequeño margen para el "peek" */
     grid-auto-columns: calc(100% - 1.2rem);
   }
 }
-.certs-left .cert-item{              /* el item ocupa toda la columna */
-  width: 100%;
-}
-
-/* (Opcional) pausar al pasar el mouse para mirar detalles */
-.spotlight .spot-track:hover{
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
 /* —— Mobile-first del hero —— */
 @media (max-width: 991.98px){
   .hero-portrait{ height:auto; padding-bottom: 1rem; }
@@ -326,6 +311,53 @@ h1, h2, h3, h4, h5, h6 {
   border:1px solid var(--color-bordes);
   box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
+
+.portrait-card img {
+  max-height: 60vh;   /* ocupa como mucho 60% de la ventana */
+  object-fit: contain; /* evita cortes */
+}
+
+
+/* --- Sobre mí: scroll interno + “aire” arriba adaptativo --- */
+.about-card{
+  /* padding base (todo alrededor) */
+  --about-pad: clamp(24px, 4vw, 36px);
+  /* top por defecto = igual al padding base */
+  --about-pad-top: var(--about-pad);
+
+  padding: var(--about-pad-top) var(--about-pad);
+  overflow-y: auto;                 /* scroll si no entra */
+  scrollbar-gutter: stable both-edges; /* evita saltitos al aparecer la barra */
+}
+
+/* En escritorio MUY alto, agregá más margen arriba para que el título se lea cómodo */
+@media (min-width: 992px) and (min-height: 900px){
+  .about-card{
+    /* sumamos ~1.25rem arriba SIN tocar laterales/abajo */
+    --about-pad-top: calc(var(--about-pad) + 1.25rem);
+  }
+}
+
+
+
+
+/* En viewports bajos, reducí el aire para que entren los botones */
+@media (max-height: 560px){
+  .spotlight-right .about-card--spotlight{
+    padding-top: clamp(16px, 3vh, 24px);
+  }
+}
+
+/* (Opcional) scrollbar más discreta */
+.spotlight-right .about-card--spotlight::-webkit-scrollbar{ width: 10px }
+.spotlight-right .about-card--spotlight::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.35);
+  border-radius: 8px;
+}
+.spotlight-right .about-card--spotlight::-webkit-scrollbar-track{
+  background: rgba(0,0,0,.15);
+}
+
 
 
 /* ===============================
@@ -367,6 +399,18 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* ===============================
+   Accesibilidad
+   =============================== */
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+
+/* ===============================
    footer
    =============================== */
 footer {
@@ -384,25 +428,22 @@ footer {
 }
 
 /* Hacer la tarjeta más sólida, con más aire interno y borde blanco */
-.about-card {
+.about-card--spotlight {
   position: absolute;
-  inset: 0;                          /* ocupa todo el spotlight */
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  /* más “aire” para que el texto no quede pegado a los bordes */
   padding: clamp(24px, 4vw, 36px);
-
   color: #fff;
-  background: rgba(16,56,102,0.92);  /* fondo sólido */
-  border: 2px solid #fff;            /* borde blanco claro */
+  background: rgba(16,56,102,0.92);
+  border: 2px solid #fff;
   border-radius: 16px;
   box-shadow: 0 12px 28px rgba(0,0,0,.45);
-
   pointer-events: auto;
   z-index: 3;
 }
+
 
 .about-card h2 { text-shadow: 0 1px 2px rgba(0,0,0,.45); }
 .about-card p  { line-height: 1.55; margin-bottom: .75rem; }
@@ -486,10 +527,14 @@ footer {
 /* Respeto a usuarios con “reducir movimiento” */
 @media (prefers-reduced-motion: reduce){
   .card.border-animado,
-  .card.border-animado-dorado{
-    animation: none;
+  .card.border-animado-dorado,
+  .hero-bg-belt .belt,   /* ← apaga el scroll del fondo */
+  .spot-track{           /* ← apaga el pase de los spotlights */
+    animation: none !important;
+    animation-delay: 0s !important;
   }
 }
+
 
 
 
