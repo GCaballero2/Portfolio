@@ -642,3 +642,18 @@ img {
     object-fit: contain; /* se ajusta al espacio SIN cortar */
   }
 }
+
+
+/* Dropdown dentro de cards: ancho completo y texto envolvente */
+.card .dropdown-menu { width: 100%; white-space: normal; }
+.card .dropdown-item { white-space: normal; line-height: 1.35; }
+
+
+/* Asegura proporción de la imagen y que no se deforme */
+.card-img-top { aspect-ratio: 16/9; object-fit: cover; }
+
+/* Lista compacta */
+.card .list-unstyled.small li { line-height: 1.4; margin-bottom: .25rem; }
+
+/* Botones en bloque y texto envolvente (por si el ancho es chico) */
+.btn-doc { white-space: normal; }
