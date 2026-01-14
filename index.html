@@ -76,22 +76,24 @@
   </figure>
 </div>
 
-<!-- SOBRE MÍ (solo móvil, arriba del carrusel) -->
-<div class="about-card-mobile d-lg-none mx-3 mb-4">
-  <h2 class="h5 fw-bold mb-2">Sobre mí</h2>
-  <p class="mb-2">
-    Soy estudiante de <strong>Ingeniería en Sistemas</strong> en la 
-    <strong>Universidad ORT Uruguay</strong>, donde curso materias de algoritmos, redes e IA.
-  </p>
-  <p class="mb-3">
-    Me apasiona el desarrollo web y la tecnología aplicada al hardware. 
-    Aprendo construyendo <strong>proyectos prácticos y prototipos</strong>.
-  </p>
-  <div class="d-flex gap-2">
-    <a class="btn btn-acento btn-sm" href="#proyectos">Ver proyectos</a>
-    <a class="btn btn-outline-dark btn-sm" href="#contacto">Contactarme</a>
-  </div>
+<div class="container">
+  <article class="about-card about-card--responsive" role="region" aria-label="Sobre mí">
+    <h2 class="h5 fw-bold mb-2">Sobre mí</h2>
+    <p class="mb-2">
+      Soy estudiante de <strong>Ingeniería en Sistemas</strong> en la <strong>Universidad ORT Uruguay</strong>,
+      donde curso materias de algoritmos, redes e IA.
+    </p>
+    <p class="mb-3">
+      Me apasiona el desarrollo web y la tecnología aplicada al hardware. Aprendo construyendo
+      <strong>proyectos prácticos y prototipos</strong>.
+    </p>
+    <div class="d-flex gap-2">
+      <a class="btn btn-acento btn-sm" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-outline-light btn-sm" href="#contacto">Contactarme</a>
+    </div>
+  </article>
 </div>
+
 
 
 <!-- CARRUSEL (solo móvil) -->
@@ -135,7 +137,7 @@
   </div>
 
 <!-- SPOTLIGHT LATERAL IZQUIERDO (con botones) -->
-<section class="certs-wrapper certs-left d-none d-lg-block">
+<div class="certs-wrapper certs-left d-none d-lg-block">
   <div class="certs-track" id="certsTrack">
     <figure class="cert-item"><img src="img/cert-01.jpg" alt="Certificado 1"></figure>
     <figure class="cert-item"><img src="img/cert-02.jpg" alt="Certificado 2"></figure>
@@ -149,7 +151,7 @@
   <!-- Controles (dentro del <section>) -->
   <button class="cert-btn prev" aria-label="Anterior" onclick="scrollCerts(-1)">‹</button>
   <button class="cert-btn next" aria-label="Siguiente" onclick="scrollCerts(1)">›</button>
-</section>
+  </div>
 
 
 <script>
@@ -160,27 +162,6 @@
     track.scrollBy({ left: dir * step, behavior: 'smooth' });
   }
 </script>
-
-<!-- SPOTLIGHT LATERAL DERECHO (tarjeta Sobre mí encima del fondo de certificados) -->
-<div class="spotlight spotlight-right d-none d-lg-block">
-  <article class="about-card about-card--spotlight" role="region" aria-label="Sobre mí">
-    <h2 class="h5 fw-bold mb-2">Sobre mí</h2>
-    <p class="mb-2">
-      Soy estudiante de <strong>Ingeniería en Sistemas</strong> en la <strong>Universidad ORT Uruguay</strong>,
-      donde curso materias de algoritmos, redes e IA.
-    </p>
-    <p class="mb-3">
-      Me apasiona el desarrollo web y la tecnología aplicada al hardware. Aprendo construyendo
-      <strong>proyectos prácticos y prototipos</strong>.
-    </p>
-    <div class="d-flex gap-2">
-      <a class="btn btn-acento btn-sm" href="#proyectos">Ver proyectos</a>
-      <a class="btn btn-outline-light btn-sm" href="#contacto">Contactarme</a>
-    </div>
-  </article>
-</div>
-
-
 
   <!-- TARJETA CENTRAL (tu foto) -->
   <div class="d-none d-lg-flex align-items-center justify-content-center hero-center">

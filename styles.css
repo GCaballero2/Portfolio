@@ -144,6 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Desktop: hace que el centro sea ~70% y se vean “peeks” claros a los lados */
 @media (min-width: 992px){
+  .about-card--responsive{ pointer-events: auto; }
   .cert-item{ width:68vw; max-width:820px }
   .certs-wrapper{ padding:0 9vw }
   .cert-item img{ height:62vh }
@@ -194,9 +195,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .spotlight-left { left: 2.5vw; }
 
-.spotlight-right{ right:2.5vw; }
-/* Desfase del carrusel derecho (empieza en la mitad del ciclo) */
-.spotlight-right .spot-track{
+/* Desfase del carrusel derecho (empieza en la mitad del ciclo)*/ 
+.spot-track{
   animation-delay: calc(var(--spot-duration) * -0.5);
 }
 /* (Opcional) pausar al pasar el mouse para mirar detalles */
@@ -204,24 +204,17 @@ h1, h2, h3, h4, h5, h6 {
   animation-play-state: paused;
   cursor: pointer;
 }
-/* ——— Sobre mí: scroll + respiración superior adaptable ——— */
-.spotlight-right .about-card--spotlight{
-  /* layout + scroll */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-y: auto;
-  scrollbar-gutter: stable both-edges;
 
-  /* padding lateral/base */
-  padding-left: clamp(20px, 3.5vmin, 36px);
-  padding-right: clamp(20px, 3.5vmin, 36px);
-  padding-bottom: clamp(20px, 3.5vmin, 36px);
-
-  /* 👇 “aire” arriba que escala con la altura de la ventana */
-  padding-top: clamp(24px, 6vh, 48px);
+/* Base: estilo tipo tarjeta móvil */
+.about-card--responsive{
+  background: #103866;
+  color: #fff;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  margin: 0 1rem 1rem;   /* similar a mx-3 mb-4 */
 }
+
 
 .spot-track{
   position:absolute; left:0; top:0; height:100%;
@@ -320,18 +313,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Sobre mí: scroll interno + “aire” arriba adaptativo --- */
 .about-card{
-  /* padding base (todo alrededor) */
-  --about-pad: clamp(24px, 4vw, 36px);
-  /* top por defecto = igual al padding base */
-  --about-pad-top: var(--about-pad);
 
-  padding: var(--about-pad-top) var(--about-pad);
-  overflow-y: auto;                 /* scroll si no entra */
+  --about-pad-top: var(--about-pad);
   scrollbar-gutter: stable both-edges; /* evita saltitos al aparecer la barra */
 }
 
 /* En escritorio MUY alto, agregá más margen arriba para que el título se lea cómodo */
-@media (min-width: 992px) and (min-height: 900px){
+@media (min-height: 900px){
   .about-card{
     /* sumamos ~1.25rem arriba SIN tocar laterales/abajo */
     --about-pad-top: calc(var(--about-pad) + 1.25rem);
@@ -339,23 +327,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+@media (min-width: 992px){
+  .about-card--responsive{
+    position: absolute;
+    right: 2.5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(240px, 24vw, 360px);
+    height: clamp(320px, 52vh, 560px);
 
+     pointer-events: auto;
 
-/* En viewports bajos, reducí el aire para que entren los botones */
-@media (max-height: 560px){
-  .spotlight-right .about-card--spotlight{
-    padding-top: clamp(16px, 3vh, 24px);
+    /* look & feel del spotlight que ya tenías */
+    background: rgba(16,56,102,0.92);
+    border: 2px solid #fff;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.45);
+
+    /* comportamiento de tu about-card--spotlight */
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+    padding: clamp(24px, 4vw, 36px);
+    margin: 0;
+    z-index: 3;
   }
-}
-
-/* (Opcional) scrollbar más discreta */
-.spotlight-right .about-card--spotlight::-webkit-scrollbar{ width: 10px }
-.spotlight-right .about-card--spotlight::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.35);
-  border-radius: 8px;
-}
-.spotlight-right .about-card--spotlight::-webkit-scrollbar-track{
-  background: rgba(0,0,0,.15);
 }
 
 
@@ -421,49 +416,9 @@ footer {
 /* ===============================
     Tarjeta Sobre mí en el spotlight derecho
    =============================== */
-/* Quitar el difuminado de bordes solo en el spotlight derecho */
-.spotlight-right{
-  -webkit-mask-image: none !important;
-          mask-image: none !important;
-}
-
-/* Hacer la tarjeta más sólida, con más aire interno y borde blanco */
-.about-card--spotlight {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(24px, 4vw, 36px);
-  color: #fff;
-  background: rgba(16,56,102,0.92);
-  border: 2px solid #fff;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.45);
-  pointer-events: auto;
-  z-index: 3;
-}
-
 
 .about-card h2 { text-shadow: 0 1px 2px rgba(0,0,0,.45); }
 .about-card p  { line-height: 1.55; margin-bottom: .75rem; }
-
-/* Versión móvil de la tarjeta Sobre mí */
-.about-card-mobile {
-  background: #103866;        /* mismo azul que la navbar */
-  color: #fff;
-  padding: 1.25rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
-}
-.about-card-mobile h2 {
-  text-shadow: 0 1px 2px rgba(0,0,0,.45);
-}
-.about-card-mobile p {
-  line-height: 1.5;
-}
-
-
 
 
 /* ===============================
@@ -637,18 +592,8 @@ img {
   display: block;        /* evita espacios raros en línea */
 }
 
-/* En móvil, limitar altura pero sin recortar */
-@media (max-width: 768px) {
-  img {
-    max-height: 80vh;    /* nunca ocupa toda la pantalla */
-    object-fit: contain; /* se ajusta al espacio SIN cortar */
-  }
-}
 
-
-
-
-/* Asegura proporción de la imagen y que no se deforme 
+/* Asegura proporción de la imagen y que no se deforme */
 .card-img-top { aspect-ratio: 16/9; object-fit: cover; }
 
 /* Lista compacta */
