@@ -90,21 +90,7 @@ h1, h2, h3, h4, h5, h6 {
   padding:0 6vw;                 /* “marco” para que asomen los vecinos */
 }
 
-/* Pista horizontal con scroll + snap al centro */
-.certs-track{
-  display:grid;
-  grid-auto-flow:column;
-  gap:24px;                      /* separación entre certificados */
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-padding:6vw;            /* coincide con el padding del wrapper */
-  -webkit-overflow-scrolling:touch;
-  padding-block:10px;            /* evita recortes de sombras */
-}
 
-/* Oculta barra de scroll en navegadores comunes */
-.certs-track::-webkit-scrollbar{ height:0 }
-.certs-track{ scrollbar-width:none }
 
 /* Cada certificado ocupa ~80% para que se vea completo y los otros asomen */
 .cert-item { scroll-snap-align: center; }
@@ -144,11 +130,50 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Desktop: hace que el centro sea ~70% y se vean “peeks” claros a los lados */
 @media (min-width: 992px){
-  .about-card--responsive{ pointer-events: auto; }
+  .about-card--responsive{
+    position: absolute;
+    right: 2.5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(240px, 24vw, 360px);
+    height: clamp(320px, 52vh, 560px);
+
+     pointer-events: auto;
+
+    /* look & feel del spotlight que ya tenías */
+    background: rgba(16,56,102,0.92);
+    border: 2px solid #fff;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.45);
+
+    /* comportamiento de tu about-card--spotlight */
+    overflow-y: auto;
+    scrollbar-gutter: stable both-edges;
+    padding: clamp(24px, 4vw, 36px);
+    margin: 0;
+    z-index: 3;
+  }
   .cert-item{ width:68vw; max-width:820px }
   .certs-wrapper{ padding:0 9vw }
   .cert-item img{ height:62vh }
 }
+
+
+/* Pista horizontal con scroll + snap al centro */
+.certs-track{
+  display:grid;
+  grid-auto-flow:column;
+  gap:24px;                      /* separación entre certificados */
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-padding:6vw;            /* coincide con el padding del wrapper */
+  -webkit-overflow-scrolling:touch;
+  padding-block:10px;            /* evita recortes de sombras */
+}
+
+/* Oculta barra de scroll en navegadores comunes */
+.certs-track::-webkit-scrollbar{ height:0 }
+.certs-track{ scrollbar-width:none }
 
 /* Carrusel de certificados anclado a la izquierda del hero */
 .certs-wrapper.certs-left{
@@ -159,6 +184,16 @@ h1, h2, h3, h4, h5, h6 {
 .certs-left .cert-item{ width:calc(100% - 0.8rem); max-width:none; padding:10px; }
 .certs-left .cert-item img{ height:clamp(240px,48vh,520px); max-height:none; object-fit:contain; }
 
+
+.certs-left .cert-item{              /* el item ocupa toda la columna */
+  width: 100%;
+}
+
+@media (min-width: 1200px){
+  .certs-left .certs-track{          /* deja un pequeño margen para el "peek" */
+    grid-auto-columns: calc(100% - 1.2rem);
+  }
+}
 
 /* ===== Hero base ===== */
 @media (max-width: 768px) {
@@ -180,31 +215,6 @@ h1, h2, h3, h4, h5, h6 {
   100%{ transform: translateY(-50%) translateX(-50%); } /* ajustá según cantidad */
 }
 
-/* ===== Spotlights laterales ===== */
-.spotlight{
-  --spot-width: clamp(240px, 24vw, 360px);
-  --spot-height: clamp(320px, 52vh, 560px);
-  --spot-gap: 2rem;           /* espacio entre items */
-  --spot-duration: 28s;       /* velocidad del pase */
-  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
-  width: var(--spot-width); height: var(--spot-height);
-  overflow: hidden; border-radius: 14px; background:#0b1326; box-shadow: 0 10px 28px rgba(0,0,0,.35);
-  /* desvanecido en bordes para “partes” de los vecinos */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-}
-.spotlight-left { left: 2.5vw; }
-
-/* Desfase del carrusel derecho (empieza en la mitad del ciclo)*/ 
-.spot-track{
-  animation-delay: calc(var(--spot-duration) * -0.5);
-}
-/* (Opcional) pausar al pasar el mouse para mirar detalles */
-.spotlight .spot-track:hover{
-  animation-play-state: paused;
-  cursor: pointer;
-}
-
 /* Base: estilo tipo tarjeta móvil */
 .about-card--responsive{
   background: #103866;
@@ -213,34 +223,6 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,.25);
   margin: 0 1rem 1rem;   /* similar a mx-3 mb-4 */
-}
-
-
-.spot-track{
-  position:absolute; left:0; top:0; height:100%;
-  display:flex; align-items:center; gap: var(--spot-gap);
-  padding: 0 calc(var(--spot-gap) * 2);  /* para que asomen los vecinos */
-  animation: spot-shift var(--spot-duration) linear infinite;
-}
-.spot-item{
-  flex: 0 0 calc(var(--spot-width) - 3.6rem);  /* un poco más angosto para que se vean vecinos */
-  height: calc(var(--spot-height) - 2.2rem);
-  object-fit: cover; border-radius: 10px; display:block;
-  box-shadow: 0 12px 24px rgba(0,0,0,.35);
-  filter: brightness(.93) contrast(1.02);
-}
-
-/* Animación: va “pasando” de un item al siguiente mostrando el centro y dejando ver bordes de vecinos */
-@keyframes spot-shift{
-  0%   { transform: translateX(0); }
-  20%  { transform: translateX(0); }                 /* pausa en el primero */
-  25%  { transform: translateX(calc(-1 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
-  45%  { transform: translateX(calc(-1 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); } /* pausa en el segundo */
-  50%  { transform: translateX(calc(-2 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
-  70%  { transform: translateX(calc(-2 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
-  75%  { transform: translateX(calc(-3 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); }
-  95%  { transform: translateX(calc(-3 * (var(--spot-width) - 3.6rem + var(--spot-gap)))); } /* pausa en el cuarto */
-  100% { transform: translateX(0); }                  /* vuelve al primero (por duplicado en HTML) */
 }
 
 /* ===== Tarjeta central ===== */
@@ -254,19 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .portrait-card figcaption{ background: rgba(16,56,102,.92); color:#fff; }
 
-.certs-left .certs-track{
-  grid-auto-columns: 100%;
-}
 
-.certs-left .cert-item{              /* el item ocupa toda la columna */
-  width: 100%;
-}
-
-@media (min-width: 1200px){
-  .certs-left .certs-track{          /* deja un pequeño margen para el "peek" */
-    grid-auto-columns: calc(100% - 1.2rem);
-  }
-}
 /* —— Mobile-first del hero —— */
 @media (max-width: 991.98px){
   .hero-portrait{ height:auto; padding-bottom: 1rem; }
@@ -296,15 +266,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Reutilizamos tu clase para certificados también en móvil */
-.spot-item--contain{
-  object-fit: contain !important;
-  background:#fff;
-  padding:6px;
-  border:1px solid var(--color-bordes);
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
-}
-
 .portrait-card img {
   max-height: 60vh;   /* ocupa como mucho 60% de la ventana */
   object-fit: contain; /* evita cortes */
@@ -325,35 +286,6 @@ h1, h2, h3, h4, h5, h6 {
     --about-pad-top: calc(var(--about-pad) + 1.25rem);
   }
 }
-
-
-@media (min-width: 992px){
-  .about-card--responsive{
-    position: absolute;
-    right: 2.5vw;
-    top: 50%;
-    transform: translateY(-50%);
-    width: clamp(240px, 24vw, 360px);
-    height: clamp(320px, 52vh, 560px);
-
-     pointer-events: auto;
-
-    /* look & feel del spotlight que ya tenías */
-    background: rgba(16,56,102,0.92);
-    border: 2px solid #fff;
-    border-radius: 16px;
-    box-shadow: 0 12px 28px rgba(0,0,0,.45);
-
-    /* comportamiento de tu about-card--spotlight */
-    overflow-y: auto;
-    scrollbar-gutter: stable both-edges;
-    padding: clamp(24px, 4vw, 36px);
-    margin: 0;
-    z-index: 3;
-  }
-}
-
-
 
 /* ===============================
    Tarjeta de premio/logro
@@ -483,10 +415,8 @@ footer {
 @media (prefers-reduced-motion: reduce){
   .card.border-animado,
   .card.border-animado-dorado,
-  .hero-bg-belt .belt,   /* ← apaga el scroll del fondo */
-  .spot-track{           /* ← apaga el pase de los spotlights */
+  .hero-bg-belt .belt {
     animation: none !important;
-    animation-delay: 0s !important;
   }
 }
 
