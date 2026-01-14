@@ -154,15 +154,6 @@
   </div>
 
 
-<script>
-  const track = document.getElementById('certsTrack');
-  function scrollCerts(dir) {
-    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
-    const step = track.clientWidth + gap; // una “página” completa
-    track.scrollBy({ left: dir * step, behavior: 'smooth' });
-  }
-</script>
-
   <!-- TARJETA CENTRAL (tu foto) -->
   <div class="d-none d-lg-flex align-items-center justify-content-center hero-center">
     <figure class="portrait-card shadow-lg">
@@ -1026,6 +1017,14 @@ function card(c){
   })();
 </script>
 
+<script>
+  const track = document.getElementById('certsTrack');
+  function scrollCerts(dir) {
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+    const step = track.clientWidth + gap; // una “página” completa
+    track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  }
+</script>
 
 
 </body>
