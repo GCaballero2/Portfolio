@@ -1018,12 +1018,16 @@ function card(c){
 </script>
 
 <script>
-  const track = document.getElementById('certsTrack');
-  function scrollCerts(dir) {
-    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
-    const step = track.clientWidth + gap; // una “página” completa
-    track.scrollBy({ left: dir * step, behavior: 'smooth' });
-  }
+  (function(){
+    const track = document.getElementById('certsTrack');
+    if(!track) return;
+
+    window.scrollCerts = function(dir){
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      const step = track.clientWidth + gap;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+  })();
 </script>
 
 
